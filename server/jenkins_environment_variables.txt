@@ -1,0 +1,10 @@
+BANK_HOST=isadevops2021teamf-bank-service
+BANK_PORT=9090
+DISPLAY_HOST=isadevops2021teamf-display-service
+DISPLAY_PORT=9191
+MAIL_HOST=isadevops2021teamf-mail-service
+MAIL_PORT=9292
+PHONE_HOST=isadevops2021teamf-phone-service
+PHONE_PORT=9393
+WEATHER_HOST=isadevops2021teamf-weather-service
+WEATHER_PORT=9494

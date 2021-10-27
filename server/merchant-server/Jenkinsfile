@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven3'
+        jdk 'jdk8'
+    }
+    triggers {
+        cron('H * * * *')
+        pollSCM('* * * * *')
+        upstream(
+            upstreamProjects: "isa-devops-2021-team-f-common-server",
+            threshold: hudson.model.Result.SUCCESS
+        )
+    }
+    environment {
+        MVN_SETTINGS = credentials('maven-settings')
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -s $MVN_SETTINGS -B -DskipTests clean package -U'
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    try {
+                        sh 'mvn -s $MVN_SETTINGS test -U'
+                    } catch (Exception e) {
+                      retry (3) {
+                       unstable('Test failed. Another try will be attempted.')
+                       sh 'mvn -s $MVN_SETTINGS test -U'
+                       }
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh 'mvn -s $MVN_SETTINGS -DskipTests deploy'
+            }
+        }
+    }
+}

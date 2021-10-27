@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                                 http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+    <persistence-unit name="primary" transaction-type="JTA">
+        <jta-data-source>Primary</jta-data-source>
+        <class>fr.unice.polytech.isa.common.entities.accounts.Customer</class>
+        <class>fr.unice.polytech.isa.common.entities.shopping.Order</class>
+        <class>fr.unice.polytech.isa.common.entities.shopping.catalog.Item</class>
+        <class>fr.unice.polytech.isa.common.entities.shopping.Cart</class>
+        <class>fr.unice.polytech.isa.common.entities.shopping.CreditCard</class>
+        <class>fr.unice.polytech.isa.common.entities.items.Card</class>
+        <class>fr.unice.polytech.isa.common.entities.items.Pass</class>
+        <class>fr.unice.polytech.isa.common.entities.shopping.catalog.PassType</class>
+        <class>fr.unice.polytech.isa.common.entities.shopping.catalog.ItemType</class>
+        <class>fr.unice.polytech.isa.common.entities.shopping.catalog.ItemCatalog</class>
+        <class>fr.unice.polytech.isa.common.entities.shopping.catalog.PassCatalog</class>
+        <class>fr.unice.polytech.isa.common.entities.shopping.catalog.CardCatalog</class>
+        <class>fr.unice.polytech.isa.common.entities.resort.LiftAccess</class>
+        <class>fr.unice.polytech.isa.common.entities.resort.SkiLift</class>
+        <class>fr.unice.polytech.isa.common.entities.resort.DoubleSkiLift</class>
+        <class>fr.unice.polytech.isa.common.entities.resort.Resort</class>
+        <class>fr.unice.polytech.isa.common.entities.resort.SkiTrail</class>
+        <class>fr.unice.polytech.isa.common.entities.resort.DisplayPanel</class>
+        <class>fr.unice.polytech.isa.common.entities.statistics.DailyStatistics</class>
+        <class>fr.unice.polytech.isa.common.entities.statistics.DailyBuyingStatistics</class>
+        <class>fr.unice.polytech.isa.common.entities.statistics.DailyPresenceStatistics</class>
+        <class>fr.unice.polytech.isa.common.entities.statistics.HourlyStatistics</class>
+        <class>fr.unice.polytech.isa.common.entities.statistics.HourlyBuyingStatistics</class>
+        <class>fr.unice.polytech.isa.common.entities.statistics.HourlyPresenceStatistics</class>
+        <class>fr.unice.polytech.isa.common.entities.items.SuperCartex</class>
+        <class>fr.unice.polytech.isa.common.entities.accounts.User</class>
+        <class>fr.unice.polytech.isa.common.entities.accounts.Merchant</class>
+        <class>fr.unice.polytech.isa.common.entities.notifications.Notification</class>
+        <class>fr.unice.polytech.isa.common.entities.notifications.Contact</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+            <property name="openjpa.RuntimeUnenhancedClasses" value="unsupported"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

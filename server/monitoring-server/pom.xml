@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.unice.polytech.isa</groupId>
+    <artifactId>monitoring-server</artifactId>
+    <packaging>ejb</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>CastexSki Monitoring Server</name>
+
+    <properties>
+        <!-- General. -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <versions.java>1.8</versions.java>
+        <versions.json>20160810</versions.json>
+
+        <!-- Plugins. -->
+        <versions.maven.compiler>3.6.1</versions.maven.compiler>
+        <versions.maven.ejb>2.5.1</versions.maven.ejb>
+        <versions.artifactory>3.2.0</versions.artifactory>
+
+        <!-- Java EE. -->
+        <versions.javaee>7.0-1</versions.javaee>
+        <versions.openejb>7.0.2</versions.openejb>
+        <versions.tomee>7.0.2</versions.tomee>
+        <versions.openjpa>2.4.1</versions.openjpa>
+
+        <!-- Modules. -->
+        <versions.common>1.0-SNAPSHOT</versions.common>
+        <versions.account>1.0-SNAPSHOT</versions.account>
+        <versions.statistics>1.0-SNAPSHOT</versions.statistics>
+        <versions.notification>1.0-SNAPSHOT</versions.notification>
+        <versions.resort>1.0-SNAPSHOT</versions.resort>
+        <versions.shopping>1.0-SNAPSHOT</versions.shopping>
+
+        <!-- Tests. -->
+        <versions.maven.surefire>2.19.1</versions.maven.surefire>
+        <versions.junit>4.12</versions.junit>
+        <versions.mockito>1.10.19</versions.mockito>
+        <versions.cukespace>1.6.5</versions.cukespace>
+        <versions.arquillian.junit>1.1.12.Final</versions.arquillian.junit>
+        <versions.arquilian.jta>1.0.3.Final</versions.arquilian.jta>
+        <versions.shrinkwrap>2.2.6</versions.shrinkwrap>
+        <tests.included>**/*Test.java</tests.included>
+        <tests.excluded>**/*IntegrationTest.java</tests.excluded>
+    </properties>
+
+    <!-- Artifactory repositories. -->
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>Team F-releases</name>
+            <url>{artifactory.url}/team-f-libs-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Team F-snapshots</name>
+            <url>{artifactory.url}/team-f-libs-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- JFrog plugins. -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jfrog-plugins-release</id>
+            <name>plugins-release</name>
+            <url>https://oss.jfrog.org/artifactory/plugins-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+
+
+
+        <!-- JSON format. -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${versions.json}</version>
+        </dependency>
+
+        <!-- OpenEJB framework. -->
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${versions.javaee}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>openejb-core</artifactId>
+            <version>${versions.openejb}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>tomee-embedded</artifactId>
+            <version>${versions.tomee}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- REST clients. -->
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>openejb-cxf</artifactId>
+            <version>${versions.openejb}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>openejb-cxf-rs</artifactId>
+            <version>${versions.openejb}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Testing frameworks. -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${versions.junit}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${versions.mockito}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.cukespace</groupId>
+            <artifactId>cukespace-core</artifactId>
+            <version>${versions.cukespace}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <version>${versions.arquillian.junit}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.resolver</groupId>
+            <artifactId>shrinkwrap-resolver-depchain</artifactId>
+            <version>${versions.shrinkwrap}</version>
+            <type>pom</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>arquillian-tomee-embedded</artifactId>
+            <version>${versions.tomee}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Common server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>common-server</artifactId>
+            <version>${versions.common}</version>
+        </dependency>
+
+        <!-- Resort server. -->
+
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>resort-server</artifactId>
+            <version>${versions.resort}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Shopping server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>shopping-server</artifactId>
+            <version>${versions.shopping}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Statistics server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>statistics-server</artifactId>
+            <version>${versions.statistics}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Notification server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>notification-server</artifactId>
+            <version>${versions.notification}</version>
+            <type>ejb</type>
+        </dependency>
+
+    </dependencies>
+    <profiles>
+        <profile>
+            <id>unitTests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>integration-test</id>
+            <properties>
+                <tests.included>**/*IntegrationTest.java</tests.included>
+                <tests.excluded></tests.excluded>
+            </properties>
+        </profile>
+    </profiles>
+    <build>
+        <finalName>monitoring-server</finalName>
+        <defaultGoal>install</defaultGoal>
+
+        <plugins>
+            <!-- Enterprise Java Bean. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>${versions.maven.ejb}</version>
+                <configuration>
+                    <ejbVersion>3.1</ejbVersion>
+                </configuration>
+            </plugin>
+
+            <!-- Java Archive. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${versions.maven.compiler}</version>
+                <configuration>
+                    <source>${versions.java}</source>
+                    <target>${versions.java}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Surefire plugin. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${versions.maven.surefire}</version>
+                <configuration>
+                    <forkMode>always</forkMode>
+                    <!-- Otherwise OpenEJB Embedded and TomEE+ Embedded share the same context. -->
+                    <reuseForks>false</reuseForks>
+                    <includes>
+                        <include>${tests.included}</include>
+                    </includes>
+                    <excludes>
+                        <exclude>${tests.excluded}</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- Run with TomEE+ embedded. -->
+            <plugin>
+                <groupId>org.apache.tomee.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>${versions.tomee}</version>
+                <configuration>
+                    <!-- TomEE+ to support the web services stack. -->
+                    <tomeeClassifier>plus</tomeeClassifier>
+                    <args>-Xmx1024m -XX:PermSize=256m</args>
+                    <deployOpenEjbApplication>true</deployOpenEjbApplication>
+                </configuration>
+            </plugin>
+
+            <!-- Artifactory. -->
+            <plugin>
+                <groupId>org.jfrog.buildinfo</groupId>
+                <artifactId>artifactory-maven-plugin</artifactId>
+                <version>${versions.artifactory}</version>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <deployProperties>
+                                <gradle>awesome</gradle>
+                            </deployProperties>
+                            <artifactory>
+                                <includeEnvVars>true</includeEnvVars>
+                                <envVarsExcludePatterns>*password*,*secret*,*key*,*token*,*passphrase*</envVarsExcludePatterns>
+                                <timeoutSec>60</timeoutSec>
+                            </artifactory>
+                            <publisher>
+                                <contextUrl>${artifactory.url}</contextUrl>
+                                <username>${artifactory.username}</username>
+                                <password>${artifactory.password}</password>
+                                <excludePatterns>*-tests.jar</excludePatterns>
+                                <repoKey>team-f-libs-release</repoKey>
+                                <snapshotRepoKey>team-f-libs-snapshot</snapshotRepoKey>
+                            </publisher>
+                            <buildInfo>
+                                <buildName>${project.artifactId}</buildName>
+                                <buildNumber>${project.version}</buildNumber>
+                                <buildUrl>${artifactory.url}/artifactory-build-info</buildUrl>
+                            </buildInfo>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

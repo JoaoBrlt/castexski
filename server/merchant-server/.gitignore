@@ -1,0 +1,27 @@
+# IDEA.
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse.
+.classpath
+.project
+.settings
+
+# VS Code.
+.vscode/
+
+# Build.
+target/
+dist/
+build/
+out/
+
+# Packages.
+*.jar
+*.ear
+*.war
+
+# Java Agent.
+agent/

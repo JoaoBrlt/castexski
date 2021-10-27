@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven3'
+        jdk 'jdk8'
+    }
+    triggers {
+        upstream(
+            upstreamProjects: 'isa-devops-2021-team-f-main-server',
+            threshold: hudson.model.Result.SUCCESS
+        )
+    }
+    stages {
+        stage('Build') {
+            steps {
+                dir('docker') {
+                    sh './build.sh'
+                }
+            }
+        }
+        stage('Stop Running Container (if there is one)') {
+            steps {
+                dir('docker') {
+                    sh 'docker stop $(docker ps -aqf "name=isadevops2021teamf-server") || echo "No service up"'
+                }
+            }
+        }
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                script {
+                    docker.withRegistry('', 'docker-hub-private-login') {
+                        dir('docker') {
+                            sh './deploy.sh'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Run') {
+            steps {
+                dir('docker') {
+                    sh './run.sh'
+                }
+            }
+        }
+    }
+}

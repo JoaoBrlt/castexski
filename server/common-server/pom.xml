@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.unice.polytech.isa</groupId>
+    <artifactId>common-server</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>CastexSki Common Server</name>
+
+    <properties>
+        <!-- General. -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <versions.java>1.8</versions.java>
+        <versions.json>20160810</versions.json>
+        <versions.jackson>2.12.3</versions.jackson>
+
+        <!-- Plugins. -->
+        <versions.maven.compiler>3.6.1</versions.maven.compiler>
+        <versions.maven.ejb>2.5.1</versions.maven.ejb>
+        <versions.artifactory>3.2.0</versions.artifactory>
+
+        <!-- Java EE. -->
+        <versions.javaee>7.0-1</versions.javaee>
+        <versions.openejb>7.0.2</versions.openejb>
+        <versions.openjpa>2.4.1</versions.openjpa>
+    </properties>
+
+    <!-- Artifactory repositories. -->
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>Team F-releases</name>
+            <url>{artifactory.url}/team-f-libs-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Team F-snapshots</name>
+            <url>{artifactory.url}/team-f-libs-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- JFrog plugins. -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jfrog-plugins-release</id>
+            <name>plugins-release</name>
+            <url>https://oss.jfrog.org/artifactory/plugins-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <!-- Jackson. -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${versions.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${versions.jackson}</version>
+        </dependency>
+
+        <!-- OpenEJB. -->
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${versions.javaee}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>openejb-core</artifactId>
+            <version>${versions.openejb}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>common-server</finalName>
+        <defaultGoal>install</defaultGoal>
+
+        <plugins>
+            <!-- Java Archive. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${versions.maven.compiler}</version>
+                <configuration>
+                    <source>${versions.java}</source>
+                    <target>${versions.java}</target>
+                </configuration>
+            </plugin>
+
+            <!-- OpenJPA plugin. -->
+            <plugin>
+                <groupId>org.apache.openjpa</groupId>
+                <artifactId>openjpa-maven-plugin</artifactId>
+                <version>${versions.openjpa}</version>
+                <configuration>
+                    <includes>**/entities/**/*.class</includes>
+                    <addDefaultConstructor>true</addDefaultConstructor>
+                    <enforcePropertyRestrictions>true</enforcePropertyRestrictions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>enhancer</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Artifactory. -->
+            <plugin>
+                <groupId>org.jfrog.buildinfo</groupId>
+                <artifactId>artifactory-maven-plugin</artifactId>
+                <version>${versions.artifactory}</version>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <deployProperties>
+                                <gradle>awesome</gradle>
+                            </deployProperties>
+                            <artifactory>
+                                <includeEnvVars>true</includeEnvVars>
+                                <envVarsExcludePatterns>*password*,*secret*,*key*,*token*,*passphrase*</envVarsExcludePatterns>
+                                <timeoutSec>60</timeoutSec>
+                            </artifactory>
+                            <publisher>
+                                <contextUrl>${artifactory.url}</contextUrl>
+                                <username>${artifactory.username}</username>
+                                <password>${artifactory.password}</password>
+                                <excludePatterns>*-tests.jar</excludePatterns>
+                                <repoKey>team-f-libs-release</repoKey>
+                                <snapshotRepoKey>team-f-libs-snapshot</snapshotRepoKey>
+                            </publisher>
+                            <buildInfo>
+                                <buildName>${project.artifactId}</buildName>
+                                <buildNumber>${project.version}</buildNumber>
+                                <buildUrl>${artifactory.url}/artifactory-build-info</buildUrl>
+                            </buildInfo>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

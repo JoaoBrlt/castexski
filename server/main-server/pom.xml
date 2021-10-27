@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.unice.polytech.isa</groupId>
+    <artifactId>main-server</artifactId>
+    <packaging>ear</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>CastexSki Main Server</name>
+
+    <properties>
+        <!-- General. -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <versions.java>1.8</versions.java>
+
+        <!-- Plugins. -->
+        <versions.maven.compiler>3.6.1</versions.maven.compiler>
+        <versions.maven.ear>2.10.1</versions.maven.ear>
+        <versions.artifactory>3.2.0</versions.artifactory>
+
+        <!-- Java EE. -->
+        <versions.tomee>7.0.2</versions.tomee>
+
+        <!-- Modules. -->
+        <versions.common>1.0-SNAPSHOT</versions.common>
+        <versions.account>1.0-SNAPSHOT</versions.account>
+        <versions.merchant>1.0-SNAPSHOT</versions.merchant>
+        <versions.shopping>1.0-SNAPSHOT</versions.shopping>
+        <versions.payment>1.0-SNAPSHOT</versions.payment>
+        <versions.resort>1.0-SNAPSHOT</versions.resort>
+        <versions.statistics>1.0-SNAPSHOT</versions.statistics>
+        <versions.monitoring>1.0-SNAPSHOT</versions.monitoring>
+        <versions.notification>1.0-SNAPSHOT</versions.notification>
+        <versions.display>1.0-SNAPSHOT</versions.display>
+    </properties>
+
+    <!-- Artifactory repositories. -->
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>Team F-releases</name>
+            <url>{artifactory.url}/team-f-libs-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Team F-snapshots</name>
+            <url>{artifactory.url}/team-f-libs-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- JFrog plugins. -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jfrog-plugins-release</id>
+            <name>plugins-release</name>
+            <url>https://oss.jfrog.org/artifactory/plugins-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <!-- Account server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>account-server</artifactId>
+            <version>${versions.account}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Merchant server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>merchant-server</artifactId>
+            <version>${versions.merchant}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Shopping server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>shopping-server</artifactId>
+            <version>${versions.shopping}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Payment server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>payment-server</artifactId>
+            <version>${versions.payment}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Resort server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>resort-server</artifactId>
+            <version>${versions.resort}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Statistics server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>statistics-server</artifactId>
+            <version>${versions.statistics}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Notification server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>notification-server</artifactId>
+            <version>${versions.notification}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Monitoring server. -->
+        <dependency>
+		<groupId>fr.unice.polytech.isa</groupId>
+		<artifactId>monitoring-server</artifactId>
+		<version>${versions.monitoring}</version>
+		<type>ejb</type>
+	</dependency>
+	
+        <!-- Display server. -->
+        <dependency>
+            <groupId>fr.unice.polytech.isa</groupId>
+            <artifactId>display-server</artifactId>
+            <version>${versions.display}</version>
+            <type>ejb</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Enterprise Application Archive. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>${versions.maven.ear}</version>
+                <configuration>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <fileNameMapping>no-version</fileNameMapping>
+                    <includeLibInApplicationXml>true</includeLibInApplicationXml>
+                </configuration>
+            </plugin>
+
+            <!-- Java Archive. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${versions.maven.compiler}</version>
+                <configuration>
+                    <source>${versions.java}</source>
+                    <target>${versions.java}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Run with TomEE+ embedded. -->
+            <plugin>
+                <groupId>org.apache.tomee.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>${versions.tomee}</version>
+                <configuration>
+                    <!-- TomEE+ to support the web services stack. -->
+                    <tomeeClassifier>plus</tomeeClassifier>
+                    <args>-Xmx512m -XX:PermSize=256m</args>
+                    <deployOpenEjbApplication>true</deployOpenEjbApplication>
+                </configuration>
+            </plugin>
+
+            <!-- Artifactory. -->
+            <plugin>
+                <groupId>org.jfrog.buildinfo</groupId>
+                <artifactId>artifactory-maven-plugin</artifactId>
+                <version>${versions.artifactory}</version>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <deployProperties>
+                                <gradle>awesome</gradle>
+                            </deployProperties>
+                            <artifactory>
+                                <includeEnvVars>true</includeEnvVars>
+                                <envVarsExcludePatterns>*password*,*secret*,*key*,*token*,*passphrase*</envVarsExcludePatterns>
+                                <timeoutSec>60</timeoutSec>
+                            </artifactory>
+                            <publisher>
+                                <contextUrl>${artifactory.url}</contextUrl>
+                                <username>${artifactory.username}</username>
+                                <password>${artifactory.password}</password>
+                                <excludePatterns>*-tests.jar</excludePatterns>
+                                <repoKey>team-f-libs-release</repoKey>
+                                <snapshotRepoKey>team-f-libs-snapshot</snapshotRepoKey>
+                            </publisher>
+                            <buildInfo>
+                                <buildName>${project.artifactId}</buildName>
+                                <buildNumber>${project.version}</buildNumber>
+                                <buildUrl>${artifactory.url}/artifactory-build-info</buildUrl>
+                            </buildInfo>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

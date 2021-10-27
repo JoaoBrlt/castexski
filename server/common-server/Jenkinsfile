@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven3'
+        jdk 'jdk8'
+    }
+    triggers {
+        cron('H * * * *')
+        pollSCM('* * * * *')
+    }
+    environment {
+        MVN_SETTINGS = credentials('maven-settings')
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh 'mvn -s $MVN_SETTINGS -DskipTests deploy'
+            }
+        }
+    }
+}

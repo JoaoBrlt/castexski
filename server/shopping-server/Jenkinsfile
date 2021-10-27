@@ -1,0 +1,71 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven3'
+        jdk 'jdk8'
+    }
+    triggers {
+        cron('H * * * *')
+        pollSCM('* * * * *')
+        upstream(
+            upstreamProjects: "isa-devops-2021-team-f-common-server",
+            threshold: hudson.model.Result.SUCCESS
+        )
+    }
+    environment {
+        MVN_SETTINGS = credentials('maven-settings')
+        BANK_HOST = 'isadevops2021teamf-bank-service'
+        BANK_PORT = '9090'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -s $MVN_SETTINGS -B -DskipTests clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    try {
+                        sh 'mvn -s $MVN_SETTINGS test -U'
+                    } catch (Exception e) {
+                      retry (3) {
+                       unstable('Test failed. Another try will be attempted.')
+                       sh 'mvn -s $MVN_SETTINGS test -U'
+                       }
+                    }
+                }
+            }
+        }
+        stage('Integration Test') {
+            steps {
+                script {
+                    try {
+                        echo 'Checking if the external service is up.'
+                        sh("ping -c 5 -w 5 $BANK_HOST")
+                    } catch (Exception e) {
+                        echo "Service not reachable, not running integration tests"
+                        return
+                    }
+                    echo 'Starting integration tests.'
+                    try {
+                    sh 'mvn test -Pintegration-test'
+                    } catch (Exception e){
+                        retry (3) {
+                        unstable('Test failed. Another try will be attempted.')
+                        sh 'mvn test -Pintegration-test'
+                        }
+                    }
+            }
+        }
+        }
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh 'mvn -s $MVN_SETTINGS -DskipTests deploy'
+            }
+        }
+    }
+}
