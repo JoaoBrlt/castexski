@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/user" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="UserServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/user">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/user" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/user">
+  <xs:element name="getUserFirstName" type="tns:getUserFirstName"/>
+  <xs:element name="getUserFirstNameResponse" type="tns:getUserFirstNameResponse"/>
+  <xs:element name="getUserFullName" type="tns:getUserFullName"/>
+  <xs:element name="getUserFullNameResponse" type="tns:getUserFullNameResponse"/>
+  <xs:element name="getUserLastName" type="tns:getUserLastName"/>
+  <xs:element name="getUserLastNameResponse" type="tns:getUserLastNameResponse"/>
+  <xs:element name="getUserType" type="tns:getUserType"/>
+  <xs:element name="getUserTypeResponse" type="tns:getUserTypeResponse"/>
+  <xs:element name="userExists" type="tns:userExists"/>
+  <xs:element name="userExistsResponse" type="tns:userExistsResponse"/>
+  <xs:complexType name="getUserLastName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserLastNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserFullName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserFullNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTypeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userExists">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userExistsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserFirstName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserFirstNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserNotFoundException" type="tns:UserNotFoundException"/>
+  <xs:complexType name="UserNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="userExistsResponse">
+    <wsdl:part element="tns:userExistsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserType">
+    <wsdl:part element="tns:getUserType" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userExists">
+    <wsdl:part element="tns:userExists" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UserNotFoundException">
+    <wsdl:part element="tns:UserNotFoundException" name="UserNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserFirstName">
+    <wsdl:part element="tns:getUserFirstName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserLastName">
+    <wsdl:part element="tns:getUserLastName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserTypeResponse">
+    <wsdl:part element="tns:getUserTypeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserLastNameResponse">
+    <wsdl:part element="tns:getUserLastNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserFullNameResponse">
+    <wsdl:part element="tns:getUserFullNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserFullName">
+    <wsdl:part element="tns:getUserFullName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserFirstNameResponse">
+    <wsdl:part element="tns:getUserFirstNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UserService">
+    <wsdl:operation name="getUserLastName">
+      <wsdl:input message="tns:getUserLastName" name="getUserLastName">
+    </wsdl:input>
+      <wsdl:output message="tns:getUserLastNameResponse" name="getUserLastNameResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UserNotFoundException" name="UserNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFullName">
+      <wsdl:input message="tns:getUserFullName" name="getUserFullName">
+    </wsdl:input>
+      <wsdl:output message="tns:getUserFullNameResponse" name="getUserFullNameResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UserNotFoundException" name="UserNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserType">
+      <wsdl:input message="tns:getUserType" name="getUserType">
+    </wsdl:input>
+      <wsdl:output message="tns:getUserTypeResponse" name="getUserTypeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UserNotFoundException" name="UserNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="userExists">
+      <wsdl:input message="tns:userExists" name="userExists">
+    </wsdl:input>
+      <wsdl:output message="tns:userExistsResponse" name="userExistsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFirstName">
+      <wsdl:input message="tns:getUserFirstName" name="getUserFirstName">
+    </wsdl:input>
+      <wsdl:output message="tns:getUserFirstNameResponse" name="getUserFirstNameResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UserNotFoundException" name="UserNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserServiceImplServiceSoapBinding" type="tns:UserService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getUserLastName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserLastName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserLastNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UserNotFoundException">
+        <soap:fault name="UserNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFullName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserFullName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserFullNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UserNotFoundException">
+        <soap:fault name="UserNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UserNotFoundException">
+        <soap:fault name="UserNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="userExists">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userExists">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userExistsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFirstName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserFirstName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserFirstNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UserNotFoundException">
+        <soap:fault name="UserNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserServiceImplService">
+    <wsdl:port binding="tns:UserServiceImplServiceSoapBinding" name="UserServiceImplPort">
+      <soap:address location="http://localhost:8080/account-server/UserWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

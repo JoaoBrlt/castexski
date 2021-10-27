@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/pass" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PassServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/pass">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/pass" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/pass">
+  <xs:element name="getLinkedPass" type="tns:getLinkedPass"/>
+  <xs:element name="getLinkedPassResponse" type="tns:getLinkedPassResponse"/>
+  <xs:element name="getNotLinkedPass" type="tns:getNotLinkedPass"/>
+  <xs:element name="getNotLinkedPassResponse" type="tns:getNotLinkedPassResponse"/>
+  <xs:element name="getPassDurationById" type="tns:getPassDurationById"/>
+  <xs:element name="getPassDurationByIdResponse" type="tns:getPassDurationByIdResponse"/>
+  <xs:element name="getPassEndDateById" type="tns:getPassEndDateById"/>
+  <xs:element name="getPassEndDateByIdResponse" type="tns:getPassEndDateByIdResponse"/>
+  <xs:element name="getPassNameById" type="tns:getPassNameById"/>
+  <xs:element name="getPassNameByIdResponse" type="tns:getPassNameByIdResponse"/>
+  <xs:element name="getPassPhysicalCardLinkedById" type="tns:getPassPhysicalCardLinkedById"/>
+  <xs:element name="getPassPhysicalCardLinkedByIdResponse" type="tns:getPassPhysicalCardLinkedByIdResponse"/>
+  <xs:element name="getPassPriceById" type="tns:getPassPriceById"/>
+  <xs:element name="getPassPriceByIdResponse" type="tns:getPassPriceByIdResponse"/>
+  <xs:element name="getPassStartDateById" type="tns:getPassStartDateById"/>
+  <xs:element name="getPassStartDateByIdResponse" type="tns:getPassStartDateByIdResponse"/>
+  <xs:element name="isActivatedPassById" type="tns:isActivatedPassById"/>
+  <xs:element name="isActivatedPassByIdResponse" type="tns:isActivatedPassByIdResponse"/>
+  <xs:element name="isChildPassById" type="tns:isChildPassById"/>
+  <xs:element name="isChildPassByIdResponse" type="tns:isChildPassByIdResponse"/>
+  <xs:element name="isPassLinkedById" type="tns:isPassLinkedById"/>
+  <xs:element name="isPassLinkedByIdResponse" type="tns:isPassLinkedByIdResponse"/>
+  <xs:complexType name="getPassNameById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassNameByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isChildPassById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isChildPassByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isActivatedPassById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isActivatedPassByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassPriceById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassPriceByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getNotLinkedPass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getNotLinkedPassResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassStartDateById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassStartDateByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLinkedPass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLinkedPassResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassEndDateById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassEndDateByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassPhysicalCardLinkedById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassPhysicalCardLinkedByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassDurationById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassDurationByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isPassLinkedById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isPassLinkedByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerNotFoundException" type="tns:CustomerNotFoundException"/>
+  <xs:complexType name="CustomerNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PassNotFoundException" type="tns:PassNotFoundException"/>
+  <xs:complexType name="PassNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getPassEndDateByIdResponse">
+    <wsdl:part element="tns:getPassEndDateByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNotLinkedPassResponse">
+    <wsdl:part element="tns:getNotLinkedPassResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isChildPassByIdResponse">
+    <wsdl:part element="tns:isChildPassByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isActivatedPassById">
+    <wsdl:part element="tns:isActivatedPassById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassPriceById">
+    <wsdl:part element="tns:getPassPriceById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassStartDateByIdResponse">
+    <wsdl:part element="tns:getPassStartDateByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNotLinkedPass">
+    <wsdl:part element="tns:getNotLinkedPass" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassPhysicalCardLinkedByIdResponse">
+    <wsdl:part element="tns:getPassPhysicalCardLinkedByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLinkedPass">
+    <wsdl:part element="tns:getLinkedPass" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassPriceByIdResponse">
+    <wsdl:part element="tns:getPassPriceByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CustomerNotFoundException">
+    <wsdl:part element="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassPhysicalCardLinkedById">
+    <wsdl:part element="tns:getPassPhysicalCardLinkedById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassNameById">
+    <wsdl:part element="tns:getPassNameById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isActivatedPassByIdResponse">
+    <wsdl:part element="tns:isActivatedPassByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isChildPassById">
+    <wsdl:part element="tns:isChildPassById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PassNotFoundException">
+    <wsdl:part element="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassStartDateById">
+    <wsdl:part element="tns:getPassStartDateById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassEndDateById">
+    <wsdl:part element="tns:getPassEndDateById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassNameByIdResponse">
+    <wsdl:part element="tns:getPassNameByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassDurationById">
+    <wsdl:part element="tns:getPassDurationById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassDurationByIdResponse">
+    <wsdl:part element="tns:getPassDurationByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isPassLinkedById">
+    <wsdl:part element="tns:isPassLinkedById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLinkedPassResponse">
+    <wsdl:part element="tns:getLinkedPassResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isPassLinkedByIdResponse">
+    <wsdl:part element="tns:isPassLinkedByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PassService">
+    <wsdl:operation name="getPassNameById">
+      <wsdl:input message="tns:getPassNameById" name="getPassNameById">
+    </wsdl:input>
+      <wsdl:output message="tns:getPassNameByIdResponse" name="getPassNameByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isChildPassById">
+      <wsdl:input message="tns:isChildPassById" name="isChildPassById">
+    </wsdl:input>
+      <wsdl:output message="tns:isChildPassByIdResponse" name="isChildPassByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isActivatedPassById">
+      <wsdl:input message="tns:isActivatedPassById" name="isActivatedPassById">
+    </wsdl:input>
+      <wsdl:output message="tns:isActivatedPassByIdResponse" name="isActivatedPassByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassPriceById">
+      <wsdl:input message="tns:getPassPriceById" name="getPassPriceById">
+    </wsdl:input>
+      <wsdl:output message="tns:getPassPriceByIdResponse" name="getPassPriceByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getNotLinkedPass">
+      <wsdl:input message="tns:getNotLinkedPass" name="getNotLinkedPass">
+    </wsdl:input>
+      <wsdl:output message="tns:getNotLinkedPassResponse" name="getNotLinkedPassResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassStartDateById">
+      <wsdl:input message="tns:getPassStartDateById" name="getPassStartDateById">
+    </wsdl:input>
+      <wsdl:output message="tns:getPassStartDateByIdResponse" name="getPassStartDateByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedPass">
+      <wsdl:input message="tns:getLinkedPass" name="getLinkedPass">
+    </wsdl:input>
+      <wsdl:output message="tns:getLinkedPassResponse" name="getLinkedPassResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassEndDateById">
+      <wsdl:input message="tns:getPassEndDateById" name="getPassEndDateById">
+    </wsdl:input>
+      <wsdl:output message="tns:getPassEndDateByIdResponse" name="getPassEndDateByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassPhysicalCardLinkedById">
+      <wsdl:input message="tns:getPassPhysicalCardLinkedById" name="getPassPhysicalCardLinkedById">
+    </wsdl:input>
+      <wsdl:output message="tns:getPassPhysicalCardLinkedByIdResponse" name="getPassPhysicalCardLinkedByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassDurationById">
+      <wsdl:input message="tns:getPassDurationById" name="getPassDurationById">
+    </wsdl:input>
+      <wsdl:output message="tns:getPassDurationByIdResponse" name="getPassDurationByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isPassLinkedById">
+      <wsdl:input message="tns:isPassLinkedById" name="isPassLinkedById">
+    </wsdl:input>
+      <wsdl:output message="tns:isPassLinkedByIdResponse" name="isPassLinkedByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PassServiceImplServiceSoapBinding" type="tns:PassService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPassNameById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPassNameById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPassNameByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isChildPassById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isChildPassById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isChildPassByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isActivatedPassById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isActivatedPassById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isActivatedPassByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassPriceById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPassPriceById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPassPriceByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getNotLinkedPass">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNotLinkedPass">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNotLinkedPassResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassStartDateById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPassStartDateById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPassStartDateByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedPass">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLinkedPass">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLinkedPassResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassEndDateById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPassEndDateById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPassEndDateByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassPhysicalCardLinkedById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPassPhysicalCardLinkedById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPassPhysicalCardLinkedByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassDurationById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPassDurationById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPassDurationByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isPassLinkedById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isPassLinkedById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isPassLinkedByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PassServiceImplService">
+    <wsdl:port binding="tns:PassServiceImplServiceSoapBinding" name="PassServiceImplPort">
+      <soap:address location="http://localhost:8080/account-server/PassWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

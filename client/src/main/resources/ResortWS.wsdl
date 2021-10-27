@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/resort" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ResortServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/resort">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/resort" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/resort">
+  <xs:element name="addDoubleSkiLift" type="tns:addDoubleSkiLift"/>
+  <xs:element name="addDoubleSkiLiftResponse" type="tns:addDoubleSkiLiftResponse"/>
+  <xs:element name="addResort" type="tns:addResort"/>
+  <xs:element name="addResortResponse" type="tns:addResortResponse"/>
+  <xs:element name="addSkiLift" type="tns:addSkiLift"/>
+  <xs:element name="addSkiLiftResponse" type="tns:addSkiLiftResponse"/>
+  <xs:element name="addSkiTrail" type="tns:addSkiTrail"/>
+  <xs:element name="addSkiTrailResponse" type="tns:addSkiTrailResponse"/>
+  <xs:element name="changeResortOpenness" type="tns:changeResortOpenness"/>
+  <xs:element name="changeResortOpennessResponse" type="tns:changeResortOpennessResponse"/>
+  <xs:element name="changeSkiLiftOpenness" type="tns:changeSkiLiftOpenness"/>
+  <xs:element name="changeSkiLiftOpennessResponse" type="tns:changeSkiLiftOpennessResponse"/>
+  <xs:element name="changeSkiTrailOpenness" type="tns:changeSkiTrailOpenness"/>
+  <xs:element name="changeSkiTrailOpennessResponse" type="tns:changeSkiTrailOpennessResponse"/>
+  <xs:element name="findResortByName" type="tns:findResortByName"/>
+  <xs:element name="findResortByNameResponse" type="tns:findResortByNameResponse"/>
+  <xs:element name="findSkiLiftByName" type="tns:findSkiLiftByName"/>
+  <xs:element name="findSkiLiftByNameResponse" type="tns:findSkiLiftByNameResponse"/>
+  <xs:element name="findSkiTrailByName" type="tns:findSkiTrailByName"/>
+  <xs:element name="findSkiTrailByNameResponse" type="tns:findSkiTrailByNameResponse"/>
+  <xs:element name="removeResort" type="tns:removeResort"/>
+  <xs:element name="removeResortResponse" type="tns:removeResortResponse"/>
+  <xs:element name="removeSkiLift" type="tns:removeSkiLift"/>
+  <xs:element name="removeSkiLiftResponse" type="tns:removeSkiLiftResponse"/>
+  <xs:element name="removeSkiTrail" type="tns:removeSkiTrail"/>
+  <xs:element name="removeSkiTrailResponse" type="tns:removeSkiTrailResponse"/>
+  <xs:complexType name="changeResortOpenness">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+      <xs:element name="isOpen" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeResortOpennessResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="removeResort">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeResortResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="findSkiLiftByName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findSkiLiftByNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeSkiLift">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeSkiLiftResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="changeSkiTrailOpenness">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="skiTrailId" type="xs:string"/>
+      <xs:element name="isOpen" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeSkiTrailOpennessResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="addSkiTrail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="isOpen" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addSkiTrailResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="findResortByName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findResortByNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeSkiTrail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeSkiTrailResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="findSkiTrailByName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findSkiTrailByNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addDoubleSkiLift">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="isOpen" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="timeLimit" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addDoubleSkiLiftResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="addSkiLift">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="isOpen" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addSkiLiftResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="addResort">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="isOpen" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="cityName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addResortResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="changeSkiLiftOpenness">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="skiLiftId" type="xs:string"/>
+      <xs:element name="isOpen" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changeSkiLiftOpennessResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="ResortNotFoundException" type="tns:ResortNotFoundException"/>
+  <xs:complexType name="ResortNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SkiLiftNotFoundException" type="tns:SkiLiftNotFoundException"/>
+  <xs:complexType name="SkiLiftNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SkiTrailNotFoundException" type="tns:SkiTrailNotFoundException"/>
+  <xs:complexType name="SkiTrailNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnavailableNameException" type="tns:UnavailableNameException"/>
+  <xs:complexType name="UnavailableNameException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addSkiLiftResponse">
+    <wsdl:part element="tns:addSkiLiftResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="changeResortOpenness">
+    <wsdl:part element="tns:changeResortOpenness" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeResort">
+    <wsdl:part element="tns:removeResort" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="changeResortOpennessResponse">
+    <wsdl:part element="tns:changeResortOpennessResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnavailableNameException">
+    <wsdl:part element="tns:UnavailableNameException" name="UnavailableNameException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSkiTrailByNameResponse">
+    <wsdl:part element="tns:findSkiTrailByNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSkiLiftByName">
+    <wsdl:part element="tns:findSkiLiftByName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSkiLift">
+    <wsdl:part element="tns:removeSkiLift" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSkiLiftResponse">
+    <wsdl:part element="tns:removeSkiLiftResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findResortByNameResponse">
+    <wsdl:part element="tns:findResortByNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="changeSkiTrailOpenness">
+    <wsdl:part element="tns:changeSkiTrailOpenness" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ResortNotFoundException">
+    <wsdl:part element="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SkiTrailNotFoundException">
+    <wsdl:part element="tns:SkiTrailNotFoundException" name="SkiTrailNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSkiTrail">
+    <wsdl:part element="tns:addSkiTrail" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findResortByName">
+    <wsdl:part element="tns:findResortByName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSkiTrailByName">
+    <wsdl:part element="tns:findSkiTrailByName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSkiTrailResponse">
+    <wsdl:part element="tns:addSkiTrailResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDoubleSkiLift">
+    <wsdl:part element="tns:addDoubleSkiLift" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addResortResponse">
+    <wsdl:part element="tns:addResortResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSkiLift">
+    <wsdl:part element="tns:addSkiLift" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="changeSkiTrailOpennessResponse">
+    <wsdl:part element="tns:changeSkiTrailOpennessResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDoubleSkiLiftResponse">
+    <wsdl:part element="tns:addDoubleSkiLiftResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSkiLiftByNameResponse">
+    <wsdl:part element="tns:findSkiLiftByNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeResortResponse">
+    <wsdl:part element="tns:removeResortResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSkiTrailResponse">
+    <wsdl:part element="tns:removeSkiTrailResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSkiTrail">
+    <wsdl:part element="tns:removeSkiTrail" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SkiLiftNotFoundException">
+    <wsdl:part element="tns:SkiLiftNotFoundException" name="SkiLiftNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addResort">
+    <wsdl:part element="tns:addResort" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="changeSkiLiftOpennessResponse">
+    <wsdl:part element="tns:changeSkiLiftOpennessResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="changeSkiLiftOpenness">
+    <wsdl:part element="tns:changeSkiLiftOpenness" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ResortService">
+    <wsdl:operation name="changeResortOpenness">
+      <wsdl:input message="tns:changeResortOpenness" name="changeResortOpenness">
+    </wsdl:input>
+      <wsdl:output message="tns:changeResortOpennessResponse" name="changeResortOpennessResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeResort">
+      <wsdl:input message="tns:removeResort" name="removeResort">
+    </wsdl:input>
+      <wsdl:output message="tns:removeResortResponse" name="removeResortResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findSkiLiftByName">
+      <wsdl:input message="tns:findSkiLiftByName" name="findSkiLiftByName">
+    </wsdl:input>
+      <wsdl:output message="tns:findSkiLiftByNameResponse" name="findSkiLiftByNameResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SkiLiftNotFoundException" name="SkiLiftNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeSkiLift">
+      <wsdl:input message="tns:removeSkiLift" name="removeSkiLift">
+    </wsdl:input>
+      <wsdl:output message="tns:removeSkiLiftResponse" name="removeSkiLiftResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SkiLiftNotFoundException" name="SkiLiftNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="changeSkiTrailOpenness">
+      <wsdl:input message="tns:changeSkiTrailOpenness" name="changeSkiTrailOpenness">
+    </wsdl:input>
+      <wsdl:output message="tns:changeSkiTrailOpennessResponse" name="changeSkiTrailOpennessResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SkiTrailNotFoundException" name="SkiTrailNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addSkiTrail">
+      <wsdl:input message="tns:addSkiTrail" name="addSkiTrail">
+    </wsdl:input>
+      <wsdl:output message="tns:addSkiTrailResponse" name="addSkiTrailResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnavailableNameException" name="UnavailableNameException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findResortByName">
+      <wsdl:input message="tns:findResortByName" name="findResortByName">
+    </wsdl:input>
+      <wsdl:output message="tns:findResortByNameResponse" name="findResortByNameResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeSkiTrail">
+      <wsdl:input message="tns:removeSkiTrail" name="removeSkiTrail">
+    </wsdl:input>
+      <wsdl:output message="tns:removeSkiTrailResponse" name="removeSkiTrailResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SkiTrailNotFoundException" name="SkiTrailNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findSkiTrailByName">
+      <wsdl:input message="tns:findSkiTrailByName" name="findSkiTrailByName">
+    </wsdl:input>
+      <wsdl:output message="tns:findSkiTrailByNameResponse" name="findSkiTrailByNameResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SkiTrailNotFoundException" name="SkiTrailNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addDoubleSkiLift">
+      <wsdl:input message="tns:addDoubleSkiLift" name="addDoubleSkiLift">
+    </wsdl:input>
+      <wsdl:output message="tns:addDoubleSkiLiftResponse" name="addDoubleSkiLiftResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnavailableNameException" name="UnavailableNameException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addSkiLift">
+      <wsdl:input message="tns:addSkiLift" name="addSkiLift">
+    </wsdl:input>
+      <wsdl:output message="tns:addSkiLiftResponse" name="addSkiLiftResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnavailableNameException" name="UnavailableNameException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addResort">
+      <wsdl:input message="tns:addResort" name="addResort">
+    </wsdl:input>
+      <wsdl:output message="tns:addResortResponse" name="addResortResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnavailableNameException" name="UnavailableNameException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="changeSkiLiftOpenness">
+      <wsdl:input message="tns:changeSkiLiftOpenness" name="changeSkiLiftOpenness">
+    </wsdl:input>
+      <wsdl:output message="tns:changeSkiLiftOpennessResponse" name="changeSkiLiftOpennessResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SkiLiftNotFoundException" name="SkiLiftNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ResortServiceImplServiceSoapBinding" type="tns:ResortService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="changeResortOpenness">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="changeResortOpenness">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="changeResortOpennessResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeResort">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeResort">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeResortResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findSkiLiftByName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findSkiLiftByName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findSkiLiftByNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SkiLiftNotFoundException">
+        <soap:fault name="SkiLiftNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeSkiLift">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeSkiLift">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeSkiLiftResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SkiLiftNotFoundException">
+        <soap:fault name="SkiLiftNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="changeSkiTrailOpenness">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="changeSkiTrailOpenness">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="changeSkiTrailOpennessResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SkiTrailNotFoundException">
+        <soap:fault name="SkiTrailNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addSkiTrail">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addSkiTrail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addSkiTrailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnavailableNameException">
+        <soap:fault name="UnavailableNameException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findResortByName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findResortByName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findResortByNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeSkiTrail">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeSkiTrail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeSkiTrailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SkiTrailNotFoundException">
+        <soap:fault name="SkiTrailNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findSkiTrailByName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findSkiTrailByName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findSkiTrailByNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SkiTrailNotFoundException">
+        <soap:fault name="SkiTrailNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addDoubleSkiLift">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addDoubleSkiLift">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addDoubleSkiLiftResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnavailableNameException">
+        <soap:fault name="UnavailableNameException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addSkiLift">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addSkiLift">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addSkiLiftResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnavailableNameException">
+        <soap:fault name="UnavailableNameException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addResort">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addResort">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addResortResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnavailableNameException">
+        <soap:fault name="UnavailableNameException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="changeSkiLiftOpenness">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="changeSkiLiftOpenness">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="changeSkiLiftOpennessResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SkiLiftNotFoundException">
+        <soap:fault name="SkiLiftNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ResortServiceImplService">
+    <wsdl:port binding="tns:ResortServiceImplServiceSoapBinding" name="ResortServiceImplPort">
+      <soap:address location="http://localhost:8080/resort-server/ResortWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

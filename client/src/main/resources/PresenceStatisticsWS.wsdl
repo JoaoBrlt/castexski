@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/presencestatistics" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PresenceStatisticsWebServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/presencestatistics">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/presencestatistics" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/presencestatistics" version="1.0">
+
+  <xs:element name="getPresenceStatisticOnSkiLiftByDate" type="tns:getPresenceStatisticOnSkiLiftByDate"/>
+
+  <xs:element name="getPresenceStatisticOnSkiLiftByDateAndHour" type="tns:getPresenceStatisticOnSkiLiftByDateAndHour"/>
+
+  <xs:element name="getPresenceStatisticOnSkiLiftByDateAndHourResponse" type="tns:getPresenceStatisticOnSkiLiftByDateAndHourResponse"/>
+
+  <xs:element name="getPresenceStatisticOnSkiLiftByDateResponse" type="tns:getPresenceStatisticOnSkiLiftByDateResponse"/>
+
+  <xs:element name="getPresenceStatisticOnSkiLiftOnMonth" type="tns:getPresenceStatisticOnSkiLiftOnMonth"/>
+
+  <xs:element name="getPresenceStatisticOnSkiLiftOnMonthResponse" type="tns:getPresenceStatisticOnSkiLiftOnMonthResponse"/>
+
+  <xs:element name="getPresenceStatisticOnSkiLiftOnWeek" type="tns:getPresenceStatisticOnSkiLiftOnWeek"/>
+
+  <xs:element name="getPresenceStatisticOnSkiLiftOnWeekResponse" type="tns:getPresenceStatisticOnSkiLiftOnWeekResponse"/>
+
+  <xs:element name="getPresenceStatisticOnSkiLiftOnYear" type="tns:getPresenceStatisticOnSkiLiftOnYear"/>
+
+  <xs:element name="getPresenceStatisticOnSkiLiftOnYearResponse" type="tns:getPresenceStatisticOnSkiLiftOnYearResponse"/>
+
+  <xs:element name="getPresenceStatisticsOnResortByDate" type="tns:getPresenceStatisticsOnResortByDate"/>
+
+  <xs:element name="getPresenceStatisticsOnResortByDateResponse" type="tns:getPresenceStatisticsOnResortByDateResponse"/>
+
+  <xs:element name="seeActualPresenceStatistics" type="tns:seeActualPresenceStatistics"/>
+
+  <xs:element name="seeActualPresenceStatisticsBySkiLift" type="tns:seeActualPresenceStatisticsBySkiLift"/>
+
+  <xs:element name="seeActualPresenceStatisticsBySkiLiftResponse" type="tns:seeActualPresenceStatisticsBySkiLiftResponse"/>
+
+  <xs:element name="seeActualPresenceStatisticsOnSkiLift" type="tns:seeActualPresenceStatisticsOnSkiLift"/>
+
+  <xs:element name="seeActualPresenceStatisticsOnSkiLiftResponse" type="tns:seeActualPresenceStatisticsOnSkiLiftResponse"/>
+
+  <xs:element name="seeActualPresenceStatisticsResponse" type="tns:seeActualPresenceStatisticsResponse"/>
+
+  <xs:element name="seePresenceStatisticsOfDay" type="tns:seePresenceStatisticsOfDay"/>
+
+  <xs:element name="seePresenceStatisticsOfDayResponse" type="tns:seePresenceStatisticsOfDayResponse"/>
+
+  <xs:complexType name="getPresenceStatisticOnSkiLiftOnMonth">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="skiLiftName" type="xs:string"/>
+      <xs:element name="monthNumber" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticOnSkiLiftOnMonthResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticOnSkiLiftOnYear">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="skiLiftName" type="xs:string"/>
+      <xs:element name="yearNumber" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticOnSkiLiftOnYearResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticsOnResortByDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="localDateRaw" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticsOnResortByDateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticOnSkiLiftByDateAndHour">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="skiLiftName" type="xs:string"/>
+      <xs:element minOccurs="0" name="localDateRaw" type="xs:string"/>
+      <xs:element name="hour" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticOnSkiLiftByDateAndHourResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seeActualPresenceStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seeActualPresenceStatisticsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seeActualPresenceStatisticsOnSkiLift">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:skiLift"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="skiLift">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dailyStatistics" nillable="true" type="tns:dailyPresenceStatistics"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="open" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="resort" type="tns:resort"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dailyPresenceStatistics">
+    <xs:complexContent>
+      <xs:extension base="tns:dailyStatistics">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="hourlyPresenceStatistics" nillable="true" type="tns:hourlyPresenceStatistics"/>
+          <xs:element minOccurs="0" name="resortName" type="xs:string"/>
+          <xs:element minOccurs="0" name="skiLiftName" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="dailyStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="date" type="tns:localDate"/>
+      <xs:element minOccurs="0" name="dateRaw" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="hourlyPresenceStatistics">
+    <xs:complexContent>
+      <xs:extension base="tns:hourlyStatistics">
+        <xs:sequence>
+          <xs:element name="beepedCards">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="xs:string"/>
+                      <xs:element minOccurs="0" name="value" type="xs:int"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="numberOfCardsBeeped" type="xs:int"/>
+          <xs:element name="numberOfPassage" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="hourlyStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element name="startingHour" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="localDate">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="resort">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="accesses" nillable="true" type="tns:liftAccess"/>
+      <xs:element minOccurs="0" name="cityName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="displayPanels" nillable="true" type="tns:displayPanel"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="lifts" nillable="true" type="tns:skiLift"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="open" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="resortEmail" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="trails" nillable="true" type="tns:skiTrail"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="liftAccess">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="allowedLiftsIds" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="passName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="displayPanel">
+    <xs:sequence>
+      <xs:element name="externalId" type="xs:int"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="skiTrail">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="displayPanels" nillable="true" type="tns:displayPanel"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="open" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seeActualPresenceStatisticsOnSkiLiftResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seePresenceStatisticsOfDay">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seePresenceStatisticsOfDayResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seeActualPresenceStatisticsBySkiLift">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="tns:skiLift"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seeActualPresenceStatisticsBySkiLiftResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticOnSkiLiftOnWeek">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="skiLiftName" type="xs:string"/>
+      <xs:element name="weekNumber" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticOnSkiLiftOnWeekResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticOnSkiLiftByDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="skiLiftName" type="xs:string"/>
+      <xs:element minOccurs="0" name="localDateRaw" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPresenceStatisticOnSkiLiftByDateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getPresenceStatisticOnSkiLiftOnMonth">
+    <wsdl:part element="tns:getPresenceStatisticOnSkiLiftOnMonth" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticOnSkiLiftOnYearResponse">
+    <wsdl:part element="tns:getPresenceStatisticOnSkiLiftOnYearResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticsOnResortByDate">
+    <wsdl:part element="tns:getPresenceStatisticsOnResortByDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticsOnResortByDateResponse">
+    <wsdl:part element="tns:getPresenceStatisticsOnResortByDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticOnSkiLiftByDateAndHour">
+    <wsdl:part element="tns:getPresenceStatisticOnSkiLiftByDateAndHour" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="seeActualPresenceStatisticsResponse">
+    <wsdl:part element="tns:seeActualPresenceStatisticsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="seeActualPresenceStatistics">
+    <wsdl:part element="tns:seeActualPresenceStatistics" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="seeActualPresenceStatisticsOnSkiLift">
+    <wsdl:part element="tns:seeActualPresenceStatisticsOnSkiLift" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="seePresenceStatisticsOfDay">
+    <wsdl:part element="tns:seePresenceStatisticsOfDay" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="seeActualPresenceStatisticsBySkiLiftResponse">
+    <wsdl:part element="tns:seeActualPresenceStatisticsBySkiLiftResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="seeActualPresenceStatisticsBySkiLift">
+    <wsdl:part element="tns:seeActualPresenceStatisticsBySkiLift" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticOnSkiLiftOnWeekResponse">
+    <wsdl:part element="tns:getPresenceStatisticOnSkiLiftOnWeekResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticOnSkiLiftByDate">
+    <wsdl:part element="tns:getPresenceStatisticOnSkiLiftByDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticOnSkiLiftByDateResponse">
+    <wsdl:part element="tns:getPresenceStatisticOnSkiLiftByDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="seePresenceStatisticsOfDayResponse">
+    <wsdl:part element="tns:seePresenceStatisticsOfDayResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticOnSkiLiftOnYear">
+    <wsdl:part element="tns:getPresenceStatisticOnSkiLiftOnYear" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticOnSkiLiftByDateAndHourResponse">
+    <wsdl:part element="tns:getPresenceStatisticOnSkiLiftByDateAndHourResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="seeActualPresenceStatisticsOnSkiLiftResponse">
+    <wsdl:part element="tns:seeActualPresenceStatisticsOnSkiLiftResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticOnSkiLiftOnWeek">
+    <wsdl:part element="tns:getPresenceStatisticOnSkiLiftOnWeek" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPresenceStatisticOnSkiLiftOnMonthResponse">
+    <wsdl:part element="tns:getPresenceStatisticOnSkiLiftOnMonthResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PresenceStatisticsWebService">
+    <wsdl:operation name="getPresenceStatisticOnSkiLiftOnMonth">
+      <wsdl:input message="tns:getPresenceStatisticOnSkiLiftOnMonth" name="getPresenceStatisticOnSkiLiftOnMonth">
+    </wsdl:input>
+      <wsdl:output message="tns:getPresenceStatisticOnSkiLiftOnMonthResponse" name="getPresenceStatisticOnSkiLiftOnMonthResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPresenceStatisticOnSkiLiftOnYear">
+      <wsdl:input message="tns:getPresenceStatisticOnSkiLiftOnYear" name="getPresenceStatisticOnSkiLiftOnYear">
+    </wsdl:input>
+      <wsdl:output message="tns:getPresenceStatisticOnSkiLiftOnYearResponse" name="getPresenceStatisticOnSkiLiftOnYearResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPresenceStatisticsOnResortByDate">
+      <wsdl:input message="tns:getPresenceStatisticsOnResortByDate" name="getPresenceStatisticsOnResortByDate">
+    </wsdl:input>
+      <wsdl:output message="tns:getPresenceStatisticsOnResortByDateResponse" name="getPresenceStatisticsOnResortByDateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPresenceStatisticOnSkiLiftByDateAndHour">
+      <wsdl:input message="tns:getPresenceStatisticOnSkiLiftByDateAndHour" name="getPresenceStatisticOnSkiLiftByDateAndHour">
+    </wsdl:input>
+      <wsdl:output message="tns:getPresenceStatisticOnSkiLiftByDateAndHourResponse" name="getPresenceStatisticOnSkiLiftByDateAndHourResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="seeActualPresenceStatistics">
+      <wsdl:input message="tns:seeActualPresenceStatistics" name="seeActualPresenceStatistics">
+    </wsdl:input>
+      <wsdl:output message="tns:seeActualPresenceStatisticsResponse" name="seeActualPresenceStatisticsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="seeActualPresenceStatisticsOnSkiLift">
+      <wsdl:input message="tns:seeActualPresenceStatisticsOnSkiLift" name="seeActualPresenceStatisticsOnSkiLift">
+    </wsdl:input>
+      <wsdl:output message="tns:seeActualPresenceStatisticsOnSkiLiftResponse" name="seeActualPresenceStatisticsOnSkiLiftResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="seePresenceStatisticsOfDay">
+      <wsdl:input message="tns:seePresenceStatisticsOfDay" name="seePresenceStatisticsOfDay">
+    </wsdl:input>
+      <wsdl:output message="tns:seePresenceStatisticsOfDayResponse" name="seePresenceStatisticsOfDayResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="seeActualPresenceStatisticsBySkiLift">
+      <wsdl:input message="tns:seeActualPresenceStatisticsBySkiLift" name="seeActualPresenceStatisticsBySkiLift">
+    </wsdl:input>
+      <wsdl:output message="tns:seeActualPresenceStatisticsBySkiLiftResponse" name="seeActualPresenceStatisticsBySkiLiftResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPresenceStatisticOnSkiLiftOnWeek">
+      <wsdl:input message="tns:getPresenceStatisticOnSkiLiftOnWeek" name="getPresenceStatisticOnSkiLiftOnWeek">
+    </wsdl:input>
+      <wsdl:output message="tns:getPresenceStatisticOnSkiLiftOnWeekResponse" name="getPresenceStatisticOnSkiLiftOnWeekResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPresenceStatisticOnSkiLiftByDate">
+      <wsdl:input message="tns:getPresenceStatisticOnSkiLiftByDate" name="getPresenceStatisticOnSkiLiftByDate">
+    </wsdl:input>
+      <wsdl:output message="tns:getPresenceStatisticOnSkiLiftByDateResponse" name="getPresenceStatisticOnSkiLiftByDateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PresenceStatisticsWebServiceImplServiceSoapBinding" type="tns:PresenceStatisticsWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPresenceStatisticOnSkiLiftOnMonth">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPresenceStatisticOnSkiLiftOnMonth">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPresenceStatisticOnSkiLiftOnMonthResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPresenceStatisticOnSkiLiftOnYear">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPresenceStatisticOnSkiLiftOnYear">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPresenceStatisticOnSkiLiftOnYearResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPresenceStatisticsOnResortByDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPresenceStatisticsOnResortByDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPresenceStatisticsOnResortByDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPresenceStatisticOnSkiLiftByDateAndHour">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPresenceStatisticOnSkiLiftByDateAndHour">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPresenceStatisticOnSkiLiftByDateAndHourResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="seeActualPresenceStatistics">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="seeActualPresenceStatistics">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="seeActualPresenceStatisticsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="seeActualPresenceStatisticsOnSkiLift">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="seeActualPresenceStatisticsOnSkiLift">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="seeActualPresenceStatisticsOnSkiLiftResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="seePresenceStatisticsOfDay">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="seePresenceStatisticsOfDay">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="seePresenceStatisticsOfDayResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="seeActualPresenceStatisticsBySkiLift">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="seeActualPresenceStatisticsBySkiLift">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="seeActualPresenceStatisticsBySkiLiftResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPresenceStatisticOnSkiLiftOnWeek">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPresenceStatisticOnSkiLiftOnWeek">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPresenceStatisticOnSkiLiftOnWeekResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPresenceStatisticOnSkiLiftByDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPresenceStatisticOnSkiLiftByDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPresenceStatisticOnSkiLiftByDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PresenceStatisticsWebServiceImplService">
+    <wsdl:port binding="tns:PresenceStatisticsWebServiceImplServiceSoapBinding" name="PresenceStatisticsWebServiceImplPort">
+      <soap:address location="http://localhost:8080/statistics-server/PresenceStatisticsWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

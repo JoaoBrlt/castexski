@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/shopping" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CartWebServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/shopping">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/shopping" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/shopping">
+  <xs:element name="addCardToCustomerCart" type="tns:addCardToCustomerCart"/>
+  <xs:element name="addCardToCustomerCartResponse" type="tns:addCardToCustomerCartResponse"/>
+  <xs:element name="addCreditCard" type="tns:addCreditCard"/>
+  <xs:element name="addCreditCardResponse" type="tns:addCreditCardResponse"/>
+  <xs:element name="addPassToCustomerCart" type="tns:addPassToCustomerCart"/>
+  <xs:element name="addPassToCustomerCartResponse" type="tns:addPassToCustomerCartResponse"/>
+  <xs:element name="displayCustomerCart" type="tns:displayCustomerCart"/>
+  <xs:element name="displayCustomerCartResponse" type="tns:displayCustomerCartResponse"/>
+  <xs:element name="getItemNameById" type="tns:getItemNameById"/>
+  <xs:element name="getItemNameByIdResponse" type="tns:getItemNameByIdResponse"/>
+  <xs:element name="getItemPriceById" type="tns:getItemPriceById"/>
+  <xs:element name="getItemPriceByIdResponse" type="tns:getItemPriceByIdResponse"/>
+  <xs:element name="getItemQuantityById" type="tns:getItemQuantityById"/>
+  <xs:element name="getItemQuantityByIdResponse" type="tns:getItemQuantityByIdResponse"/>
+  <xs:element name="getItemTypeById" type="tns:getItemTypeById"/>
+  <xs:element name="getItemTypeByIdResponse" type="tns:getItemTypeByIdResponse"/>
+  <xs:element name="getPassDurationById" type="tns:getPassDurationById"/>
+  <xs:element name="getPassDurationByIdResponse" type="tns:getPassDurationByIdResponse"/>
+  <xs:element name="getTotalPriceById" type="tns:getTotalPriceById"/>
+  <xs:element name="getTotalPriceByIdResponse" type="tns:getTotalPriceByIdResponse"/>
+  <xs:element name="isCardById" type="tns:isCardById"/>
+  <xs:element name="isCardByIdResponse" type="tns:isCardByIdResponse"/>
+  <xs:element name="isChildrenPassById" type="tns:isChildrenPassById"/>
+  <xs:element name="isChildrenPassByIdResponse" type="tns:isChildrenPassByIdResponse"/>
+  <xs:element name="isPassById" type="tns:isPassById"/>
+  <xs:element name="isPassByIdResponse" type="tns:isPassByIdResponse"/>
+  <xs:element name="isSuperCartexById" type="tns:isSuperCartexById"/>
+  <xs:element name="isSuperCartexByIdResponse" type="tns:isSuperCartexByIdResponse"/>
+  <xs:element name="removeCardFromCustomerCart" type="tns:removeCardFromCustomerCart"/>
+  <xs:element name="removeCardFromCustomerCartResponse" type="tns:removeCardFromCustomerCartResponse"/>
+  <xs:element name="removePassFromCustomerCart" type="tns:removePassFromCustomerCart"/>
+  <xs:element name="removePassFromCustomerCartResponse" type="tns:removePassFromCustomerCartResponse"/>
+  <xs:element name="validateCustomerCart" type="tns:validateCustomerCart"/>
+  <xs:element name="validateCustomerCartResponse" type="tns:validateCustomerCartResponse"/>
+  <xs:complexType name="getItemQuantityById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="itemId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getItemQuantityByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCreditCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="creditCardName" type="xs:string"/>
+      <xs:element minOccurs="0" name="creditCardNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="creditCardCVV" type="xs:string"/>
+      <xs:element minOccurs="0" name="creditCardExpiryMonth" type="xs:string"/>
+      <xs:element minOccurs="0" name="creditCardExpiryYear" type="xs:string"/>
+      <xs:element name="saveCreditCard" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCreditCardResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="removePassFromCustomerCart">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passName" type="xs:string"/>
+      <xs:element minOccurs="0" name="duration" type="xs:string"/>
+      <xs:element name="isChildrenPass" type="xs:boolean"/>
+      <xs:element name="quantity" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removePassFromCustomerCartResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="validateCustomerCart">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateCustomerCartResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="removeCardFromCustomerCart">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="cardName" type="xs:string"/>
+      <xs:element name="isSuperCartex" type="xs:boolean"/>
+      <xs:element name="quantity" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeCardFromCustomerCartResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getItemPriceById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="itemId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getItemPriceByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addPassToCustomerCart">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="passName" type="xs:string"/>
+      <xs:element minOccurs="0" name="duration" type="xs:string"/>
+      <xs:element name="isChildrenPass" type="xs:boolean"/>
+      <xs:element name="quantity" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addPassToCustomerCartResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="isPassById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="itemId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isPassByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="displayCustomerCart">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="displayCustomerCartResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getItemTypeById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="itemId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getItemTypeByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassDurationById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="passItemId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassDurationByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isCardById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="itemId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isCardByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCardToCustomerCart">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="cardName" type="xs:string"/>
+      <xs:element name="isSuperCartex" type="xs:boolean"/>
+      <xs:element name="quantity" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCardToCustomerCartResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="isSuperCartexById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="passItemId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isSuperCartexByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isChildrenPassById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="passItemId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isChildrenPassByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getItemNameById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="itemId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getItemNameByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTotalPriceById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="itemId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTotalPriceByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ItemNotFoundException" type="tns:ItemNotFoundException"/>
+  <xs:complexType name="ItemNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnknownCatalogEntryException" type="tns:UnknownCatalogEntryException"/>
+  <xs:complexType name="UnknownCatalogEntryException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NullQuantityException" type="tns:NullQuantityException"/>
+  <xs:complexType name="NullQuantityException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmptyCartException" type="tns:EmptyCartException"/>
+  <xs:complexType name="EmptyCartException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NoCreditCardException" type="tns:NoCreditCardException"/>
+  <xs:complexType name="NoCreditCardException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentException" type="tns:PaymentException"/>
+  <xs:complexType name="PaymentException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerNotFoundException" type="tns:CustomerNotFoundException"/>
+  <xs:complexType name="CustomerNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getItemQuantityByIdResponse">
+    <wsdl:part element="tns:getItemQuantityByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removePassFromCustomerCart">
+    <wsdl:part element="tns:removePassFromCustomerCart" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isChildrenPassByIdResponse">
+    <wsdl:part element="tns:isChildrenPassByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateCustomerCart">
+    <wsdl:part element="tns:validateCustomerCart" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeCardFromCustomerCart">
+    <wsdl:part element="tns:removeCardFromCustomerCart" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnknownCatalogEntryException">
+    <wsdl:part element="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItemTypeByIdResponse">
+    <wsdl:part element="tns:getItemTypeByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCreditCardResponse">
+    <wsdl:part element="tns:addCreditCardResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItemTypeById">
+    <wsdl:part element="tns:getItemTypeById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removePassFromCustomerCartResponse">
+    <wsdl:part element="tns:removePassFromCustomerCartResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassDurationById">
+    <wsdl:part element="tns:getPassDurationById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItemNameByIdResponse">
+    <wsdl:part element="tns:getItemNameByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCardToCustomerCart">
+    <wsdl:part element="tns:addCardToCustomerCart" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isSuperCartexById">
+    <wsdl:part element="tns:isSuperCartexById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EmptyCartException">
+    <wsdl:part element="tns:EmptyCartException" name="EmptyCartException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isPassByIdResponse">
+    <wsdl:part element="tns:isPassByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeCardFromCustomerCartResponse">
+    <wsdl:part element="tns:removeCardFromCustomerCartResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItemQuantityById">
+    <wsdl:part element="tns:getItemQuantityById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCreditCard">
+    <wsdl:part element="tns:addCreditCard" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CustomerNotFoundException">
+    <wsdl:part element="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateCustomerCartResponse">
+    <wsdl:part element="tns:validateCustomerCartResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayCustomerCartResponse">
+    <wsdl:part element="tns:displayCustomerCartResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItemPriceById">
+    <wsdl:part element="tns:getItemPriceById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPassToCustomerCart">
+    <wsdl:part element="tns:addPassToCustomerCart" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isSuperCartexByIdResponse">
+    <wsdl:part element="tns:isSuperCartexByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItemPriceByIdResponse">
+    <wsdl:part element="tns:getItemPriceByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalPriceByIdResponse">
+    <wsdl:part element="tns:getTotalPriceByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isPassById">
+    <wsdl:part element="tns:isPassById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isCardByIdResponse">
+    <wsdl:part element="tns:isCardByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPassToCustomerCartResponse">
+    <wsdl:part element="tns:addPassToCustomerCartResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayCustomerCart">
+    <wsdl:part element="tns:displayCustomerCart" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isCardById">
+    <wsdl:part element="tns:isCardById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ItemNotFoundException">
+    <wsdl:part element="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassDurationByIdResponse">
+    <wsdl:part element="tns:getPassDurationByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NullQuantityException">
+    <wsdl:part element="tns:NullQuantityException" name="NullQuantityException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isChildrenPassById">
+    <wsdl:part element="tns:isChildrenPassById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NoCreditCardException">
+    <wsdl:part element="tns:NoCreditCardException" name="NoCreditCardException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PaymentException">
+    <wsdl:part element="tns:PaymentException" name="PaymentException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCardToCustomerCartResponse">
+    <wsdl:part element="tns:addCardToCustomerCartResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItemNameById">
+    <wsdl:part element="tns:getItemNameById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalPriceById">
+    <wsdl:part element="tns:getTotalPriceById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CartWebService">
+    <wsdl:operation name="getItemQuantityById">
+      <wsdl:input message="tns:getItemQuantityById" name="getItemQuantityById">
+    </wsdl:input>
+      <wsdl:output message="tns:getItemQuantityByIdResponse" name="getItemQuantityByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addCreditCard">
+      <wsdl:input message="tns:addCreditCard" name="addCreditCard">
+    </wsdl:input>
+      <wsdl:output message="tns:addCreditCardResponse" name="addCreditCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePassFromCustomerCart">
+      <wsdl:input message="tns:removePassFromCustomerCart" name="removePassFromCustomerCart">
+    </wsdl:input>
+      <wsdl:output message="tns:removePassFromCustomerCartResponse" name="removePassFromCustomerCartResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:NullQuantityException" name="NullQuantityException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validateCustomerCart">
+      <wsdl:input message="tns:validateCustomerCart" name="validateCustomerCart">
+    </wsdl:input>
+      <wsdl:output message="tns:validateCustomerCartResponse" name="validateCustomerCartResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:EmptyCartException" name="EmptyCartException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NoCreditCardException" name="NoCreditCardException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:PaymentException" name="PaymentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeCardFromCustomerCart">
+      <wsdl:input message="tns:removeCardFromCustomerCart" name="removeCardFromCustomerCart">
+    </wsdl:input>
+      <wsdl:output message="tns:removeCardFromCustomerCartResponse" name="removeCardFromCustomerCartResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:NullQuantityException" name="NullQuantityException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getItemPriceById">
+      <wsdl:input message="tns:getItemPriceById" name="getItemPriceById">
+    </wsdl:input>
+      <wsdl:output message="tns:getItemPriceByIdResponse" name="getItemPriceByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addPassToCustomerCart">
+      <wsdl:input message="tns:addPassToCustomerCart" name="addPassToCustomerCart">
+    </wsdl:input>
+      <wsdl:output message="tns:addPassToCustomerCartResponse" name="addPassToCustomerCartResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:NullQuantityException" name="NullQuantityException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isPassById">
+      <wsdl:input message="tns:isPassById" name="isPassById">
+    </wsdl:input>
+      <wsdl:output message="tns:isPassByIdResponse" name="isPassByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="displayCustomerCart">
+      <wsdl:input message="tns:displayCustomerCart" name="displayCustomerCart">
+    </wsdl:input>
+      <wsdl:output message="tns:displayCustomerCartResponse" name="displayCustomerCartResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getItemTypeById">
+      <wsdl:input message="tns:getItemTypeById" name="getItemTypeById">
+    </wsdl:input>
+      <wsdl:output message="tns:getItemTypeByIdResponse" name="getItemTypeByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassDurationById">
+      <wsdl:input message="tns:getPassDurationById" name="getPassDurationById">
+    </wsdl:input>
+      <wsdl:output message="tns:getPassDurationByIdResponse" name="getPassDurationByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isCardById">
+      <wsdl:input message="tns:isCardById" name="isCardById">
+    </wsdl:input>
+      <wsdl:output message="tns:isCardByIdResponse" name="isCardByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addCardToCustomerCart">
+      <wsdl:input message="tns:addCardToCustomerCart" name="addCardToCustomerCart">
+    </wsdl:input>
+      <wsdl:output message="tns:addCardToCustomerCartResponse" name="addCardToCustomerCartResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:NullQuantityException" name="NullQuantityException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isSuperCartexById">
+      <wsdl:input message="tns:isSuperCartexById" name="isSuperCartexById">
+    </wsdl:input>
+      <wsdl:output message="tns:isSuperCartexByIdResponse" name="isSuperCartexByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isChildrenPassById">
+      <wsdl:input message="tns:isChildrenPassById" name="isChildrenPassById">
+    </wsdl:input>
+      <wsdl:output message="tns:isChildrenPassByIdResponse" name="isChildrenPassByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getItemNameById">
+      <wsdl:input message="tns:getItemNameById" name="getItemNameById">
+    </wsdl:input>
+      <wsdl:output message="tns:getItemNameByIdResponse" name="getItemNameByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalPriceById">
+      <wsdl:input message="tns:getTotalPriceById" name="getTotalPriceById">
+    </wsdl:input>
+      <wsdl:output message="tns:getTotalPriceByIdResponse" name="getTotalPriceByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemNotFoundException" name="ItemNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CartWebServiceImplServiceSoapBinding" type="tns:CartWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="removePassFromCustomerCart">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removePassFromCustomerCart">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removePassFromCustomerCartResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NullQuantityException">
+        <soap:fault name="NullQuantityException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addCreditCard">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addCreditCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addCreditCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getItemQuantityById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getItemQuantityById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getItemQuantityByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validateCustomerCart">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validateCustomerCart">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validateCustomerCartResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="EmptyCartException">
+        <soap:fault name="EmptyCartException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoCreditCardException">
+        <soap:fault name="NoCreditCardException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PaymentException">
+        <soap:fault name="PaymentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeCardFromCustomerCart">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeCardFromCustomerCart">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeCardFromCustomerCartResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NullQuantityException">
+        <soap:fault name="NullQuantityException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getItemPriceById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getItemPriceById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getItemPriceByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addPassToCustomerCart">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addPassToCustomerCart">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPassToCustomerCartResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NullQuantityException">
+        <soap:fault name="NullQuantityException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isPassById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isPassById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isPassByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="displayCustomerCart">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="displayCustomerCart">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="displayCustomerCartResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getItemTypeById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getItemTypeById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getItemTypeByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPassDurationById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPassDurationById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPassDurationByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isCardById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isCardById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isCardByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addCardToCustomerCart">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addCardToCustomerCart">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addCardToCustomerCartResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NullQuantityException">
+        <soap:fault name="NullQuantityException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isSuperCartexById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isSuperCartexById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isSuperCartexByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isChildrenPassById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isChildrenPassById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isChildrenPassByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getItemNameById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getItemNameById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getItemNameByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalPriceById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTotalPriceById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTotalPriceByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemNotFoundException">
+        <soap:fault name="ItemNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CartWebServiceImplService">
+    <wsdl:port binding="tns:CartWebServiceImplServiceSoapBinding" name="CartWebServiceImplPort">
+      <soap:address location="http://localhost:8080/shopping-server/CartWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

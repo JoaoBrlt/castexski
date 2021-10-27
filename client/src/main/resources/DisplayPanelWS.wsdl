@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/displaypanel" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="DisplayPanelServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/displaypanel">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/displaypanel" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/displaypanel">
+  <xs:element name="addDisplayPanelToResort" type="tns:addDisplayPanelToResort"/>
+  <xs:element name="addDisplayPanelToResortResponse" type="tns:addDisplayPanelToResortResponse"/>
+  <xs:element name="addDisplayPanelToSkiTrail" type="tns:addDisplayPanelToSkiTrail"/>
+  <xs:element name="addDisplayPanelToSkiTrailResponse" type="tns:addDisplayPanelToSkiTrailResponse"/>
+  <xs:element name="deleteDisplayPanel" type="tns:deleteDisplayPanel"/>
+  <xs:element name="deleteDisplayPanelResponse" type="tns:deleteDisplayPanelResponse"/>
+  <xs:element name="findDisplaysByResort" type="tns:findDisplaysByResort"/>
+  <xs:element name="findDisplaysByResortResponse" type="tns:findDisplaysByResortResponse"/>
+  <xs:element name="findDisplaysBySkiTrail" type="tns:findDisplaysBySkiTrail"/>
+  <xs:element name="findDisplaysBySkiTrailResponse" type="tns:findDisplaysBySkiTrailResponse"/>
+  <xs:element name="modifyDisplayedText" type="tns:modifyDisplayedText"/>
+  <xs:element name="modifyDisplayedTextResponse" type="tns:modifyDisplayedTextResponse"/>
+  <xs:complexType name="modifyDisplayedText">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="displayPanelId" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyDisplayedTextResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="deleteDisplayPanel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+      <xs:element minOccurs="0" name="displayPanelId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteDisplayPanelResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="findDisplaysBySkiTrail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="skiTrailId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findDisplaysBySkiTrailResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findDisplaysByResort">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findDisplaysByResortResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addDisplayPanelToResort">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addDisplayPanelToResortResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addDisplayPanelToSkiTrail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resortId" type="xs:string"/>
+      <xs:element minOccurs="0" name="skiTrailId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addDisplayPanelToSkiTrailResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DisplayPanelNotFoundException" type="tns:DisplayPanelNotFoundException"/>
+  <xs:complexType name="DisplayPanelNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExternalServiceException" type="tns:ExternalServiceException"/>
+  <xs:complexType name="ExternalServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResortNotFoundException" type="tns:ResortNotFoundException"/>
+  <xs:complexType name="ResortNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SkiTrailNotFoundException" type="tns:SkiTrailNotFoundException"/>
+  <xs:complexType name="SkiTrailNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="modifyDisplayedText">
+    <wsdl:part element="tns:modifyDisplayedText" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDisplaysByResortResponse">
+    <wsdl:part element="tns:findDisplaysByResortResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDisplayPanelToSkiTrailResponse">
+    <wsdl:part element="tns:addDisplayPanelToSkiTrailResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDisplayPanelToSkiTrail">
+    <wsdl:part element="tns:addDisplayPanelToSkiTrail" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DisplayPanelNotFoundException">
+    <wsdl:part element="tns:DisplayPanelNotFoundException" name="DisplayPanelNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteDisplayPanel">
+    <wsdl:part element="tns:deleteDisplayPanel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDisplaysBySkiTrail">
+    <wsdl:part element="tns:findDisplaysBySkiTrail" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDisplaysByResort">
+    <wsdl:part element="tns:findDisplaysByResort" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ResortNotFoundException">
+    <wsdl:part element="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SkiTrailNotFoundException">
+    <wsdl:part element="tns:SkiTrailNotFoundException" name="SkiTrailNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDisplayPanelToResortResponse">
+    <wsdl:part element="tns:addDisplayPanelToResortResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyDisplayedTextResponse">
+    <wsdl:part element="tns:modifyDisplayedTextResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteDisplayPanelResponse">
+    <wsdl:part element="tns:deleteDisplayPanelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDisplayPanelToResort">
+    <wsdl:part element="tns:addDisplayPanelToResort" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ExternalServiceException">
+    <wsdl:part element="tns:ExternalServiceException" name="ExternalServiceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDisplaysBySkiTrailResponse">
+    <wsdl:part element="tns:findDisplaysBySkiTrailResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DisplayPanelService">
+    <wsdl:operation name="modifyDisplayedText">
+      <wsdl:input message="tns:modifyDisplayedText" name="modifyDisplayedText">
+    </wsdl:input>
+      <wsdl:output message="tns:modifyDisplayedTextResponse" name="modifyDisplayedTextResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ExternalServiceException" name="ExternalServiceException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DisplayPanelNotFoundException" name="DisplayPanelNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDisplayPanel">
+      <wsdl:input message="tns:deleteDisplayPanel" name="deleteDisplayPanel">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteDisplayPanelResponse" name="deleteDisplayPanelResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DisplayPanelNotFoundException" name="DisplayPanelNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findDisplaysBySkiTrail">
+      <wsdl:input message="tns:findDisplaysBySkiTrail" name="findDisplaysBySkiTrail">
+    </wsdl:input>
+      <wsdl:output message="tns:findDisplaysBySkiTrailResponse" name="findDisplaysBySkiTrailResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SkiTrailNotFoundException" name="SkiTrailNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findDisplaysByResort">
+      <wsdl:input message="tns:findDisplaysByResort" name="findDisplaysByResort">
+    </wsdl:input>
+      <wsdl:output message="tns:findDisplaysByResortResponse" name="findDisplaysByResortResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addDisplayPanelToResort">
+      <wsdl:input message="tns:addDisplayPanelToResort" name="addDisplayPanelToResort">
+    </wsdl:input>
+      <wsdl:output message="tns:addDisplayPanelToResortResponse" name="addDisplayPanelToResortResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ExternalServiceException" name="ExternalServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addDisplayPanelToSkiTrail">
+      <wsdl:input message="tns:addDisplayPanelToSkiTrail" name="addDisplayPanelToSkiTrail">
+    </wsdl:input>
+      <wsdl:output message="tns:addDisplayPanelToSkiTrailResponse" name="addDisplayPanelToSkiTrailResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SkiTrailNotFoundException" name="SkiTrailNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ExternalServiceException" name="ExternalServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DisplayPanelServiceImplServiceSoapBinding" type="tns:DisplayPanelService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="modifyDisplayedText">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="modifyDisplayedText">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifyDisplayedTextResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ExternalServiceException">
+        <soap:fault name="ExternalServiceException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DisplayPanelNotFoundException">
+        <soap:fault name="DisplayPanelNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDisplayPanel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteDisplayPanel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteDisplayPanelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DisplayPanelNotFoundException">
+        <soap:fault name="DisplayPanelNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findDisplaysBySkiTrail">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findDisplaysBySkiTrail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findDisplaysBySkiTrailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SkiTrailNotFoundException">
+        <soap:fault name="SkiTrailNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findDisplaysByResort">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findDisplaysByResort">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findDisplaysByResortResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addDisplayPanelToResort">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addDisplayPanelToResort">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addDisplayPanelToResortResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExternalServiceException">
+        <soap:fault name="ExternalServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addDisplayPanelToSkiTrail">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addDisplayPanelToSkiTrail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addDisplayPanelToSkiTrailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SkiTrailNotFoundException">
+        <soap:fault name="SkiTrailNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExternalServiceException">
+        <soap:fault name="ExternalServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DisplayPanelServiceImplService">
+    <wsdl:port binding="tns:DisplayPanelServiceImplServiceSoapBinding" name="DisplayPanelServiceImplPort">
+      <soap:address location="http://localhost:8080/display-server/DisplayPanelWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

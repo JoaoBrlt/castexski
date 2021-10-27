@@ -1,0 +1,7 @@
+# Clear the customers
+deleteCustomer ludovic.marti@poly.fr
+deleteCustomer ryana.karaki@poly.fr
+deleteCustomer valentin.roccelli@poly.fr
+deleteCustomer joao.brilhante@poly.fr
+deleteCustomer armand.fargeon@poly.fr
+deleteMerchant pc@poly.fr

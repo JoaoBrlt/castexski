@@ -1,0 +1,34 @@
+# initialise the resort with some ski lifts
+
+addResort resort_F resort-f@mail.fr true PolyVille
+
+addSkiLift resort_F lift_1 true
+addSkiLift resort_F lift_2 true
+addSkiLift resort_F lift_3 true
+addSkiLift resort_F lift_4 false
+addSkiLift resort_F lift_5 true
+addDoubleSkiLift resort_F d_lift_1 true 1
+addDoubleSkiLift resort_F d_lift_2 true 1
+
+addAccess resort_F Discovery-demo lift_1
+addAccess resort_F Discovery-demo lift_2
+addAccess resort_F Discovery-demo lift_3
+addAccess resort_F Discovery-demo d_lift_1
+addAccess resort_F Discovery-demo d_lift_2
+
+addAccess resort_F Expert-demo lift_3
+addAccess resort_F Expert-demo lift_4
+addAccess resort_F Expert-demo lift_5
+addAccess resort_F Expert-demo d_lift_1
+addAccess resort_F Expert-demo d_lift_2
+
+addAccess resort_F Training-demo lift_1
+addAccess resort_F Training-demo lift_2
+addAccess resort_F Training-demo d_lift_1
+addAccess resort_F Training-demo d_lift_2
+
+addDisplayToResort resort_F
+addDisplayToResort resort_F
+addDisplayToResort resort_F
+
+addNotification EMAIL CRON "*/30 * * *" null null ALL null null "Notification subject" "This is the notification message."

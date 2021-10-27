@@ -1,0 +1,21 @@
+# Clear the catalog
+
+deleteEntryCard Super-Cartex-demo true
+deleteEntryCard Cartex-demo false
+deleteEntryCard Cartex-demo-2 false
+
+deleteEntryPass Discovery-demo 24
+deleteEntryPass Discovery-demo 72
+deleteEntryPass Discovery-demo 120
+
+deleteEntryPass Expert-demo 24
+deleteEntryPass Expert-demo 72
+deleteEntryPass Expert-demo 120
+
+deleteEntryPass Training-demo 24
+deleteEntryPass Training-demo 72
+deleteEntryPass Training-demo 120
+
+deleteEntryPass SUPER_ORIGINAL 24
+deleteEntryPass SUPER_FREE_EIGHTH 24
+deleteEntryPass SUPER_FREE_HOUR 1

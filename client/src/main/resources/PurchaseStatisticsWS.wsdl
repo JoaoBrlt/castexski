@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/purchasestatistics" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PurchaseStatisticsWebServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/purchasestatistics">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/purchasestatistics" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/purchasestatistics" version="1.0">
+
+  <xs:element name="detailedPurchaseStatisticsByDate" type="tns:detailedPurchaseStatisticsByDate"/>
+
+  <xs:element name="detailedPurchaseStatisticsByDateResponse" type="tns:detailedPurchaseStatisticsByDateResponse"/>
+
+  <xs:element name="getNumberOfAllPassesBoughtOnDate" type="tns:getNumberOfAllPassesBoughtOnDate"/>
+
+  <xs:element name="getNumberOfAllPassesBoughtOnDateResponse" type="tns:getNumberOfAllPassesBoughtOnDateResponse"/>
+
+  <xs:element name="getNumberOfCardsBoughtOnDate" type="tns:getNumberOfCardsBoughtOnDate"/>
+
+  <xs:element name="getNumberOfCardsBoughtOnDateResponse" type="tns:getNumberOfCardsBoughtOnDateResponse"/>
+
+  <xs:element name="getNumberOfChildPassesBoughtOnDate" type="tns:getNumberOfChildPassesBoughtOnDate"/>
+
+  <xs:element name="getNumberOfChildPassesBoughtOnDateResponse" type="tns:getNumberOfChildPassesBoughtOnDateResponse"/>
+
+  <xs:element name="getNumberOfSpecificPassBoughtOnDate" type="tns:getNumberOfSpecificPassBoughtOnDate"/>
+
+  <xs:element name="getNumberOfSpecificPassBoughtOnDateResponse" type="tns:getNumberOfSpecificPassBoughtOnDateResponse"/>
+
+  <xs:element name="getNumberOfSuperCartexBoughtOnDate" type="tns:getNumberOfSuperCartexBoughtOnDate"/>
+
+  <xs:element name="getNumberOfSuperCartexBoughtOnDateResponse" type="tns:getNumberOfSuperCartexBoughtOnDateResponse"/>
+
+  <xs:complexType name="getNumberOfAllPassesBoughtOnDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="localDateRaw" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNumberOfAllPassesBoughtOnDateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNumberOfSpecificPassBoughtOnDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="passName" type="xs:string"/>
+      <xs:element minOccurs="0" name="localDateRaw" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNumberOfSpecificPassBoughtOnDateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detailedPurchaseStatisticsByDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detailedPurchaseStatisticsByDateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNumberOfSuperCartexBoughtOnDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="localDateRaw" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNumberOfSuperCartexBoughtOnDateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNumberOfCardsBoughtOnDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="localDateRaw" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNumberOfCardsBoughtOnDateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNumberOfChildPassesBoughtOnDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="localDateRaw" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNumberOfChildPassesBoughtOnDateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="detailedPurchaseStatisticsByDateResponse">
+    <wsdl:part element="tns:detailedPurchaseStatisticsByDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfAllPassesBoughtOnDate">
+    <wsdl:part element="tns:getNumberOfAllPassesBoughtOnDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfSpecificPassBoughtOnDate">
+    <wsdl:part element="tns:getNumberOfSpecificPassBoughtOnDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="detailedPurchaseStatisticsByDate">
+    <wsdl:part element="tns:detailedPurchaseStatisticsByDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfCardsBoughtOnDateResponse">
+    <wsdl:part element="tns:getNumberOfCardsBoughtOnDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfSuperCartexBoughtOnDate">
+    <wsdl:part element="tns:getNumberOfSuperCartexBoughtOnDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfChildPassesBoughtOnDateResponse">
+    <wsdl:part element="tns:getNumberOfChildPassesBoughtOnDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfSuperCartexBoughtOnDateResponse">
+    <wsdl:part element="tns:getNumberOfSuperCartexBoughtOnDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfCardsBoughtOnDate">
+    <wsdl:part element="tns:getNumberOfCardsBoughtOnDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfAllPassesBoughtOnDateResponse">
+    <wsdl:part element="tns:getNumberOfAllPassesBoughtOnDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfChildPassesBoughtOnDate">
+    <wsdl:part element="tns:getNumberOfChildPassesBoughtOnDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfSpecificPassBoughtOnDateResponse">
+    <wsdl:part element="tns:getNumberOfSpecificPassBoughtOnDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PurchaseStatisticsWebService">
+    <wsdl:operation name="getNumberOfAllPassesBoughtOnDate">
+      <wsdl:input message="tns:getNumberOfAllPassesBoughtOnDate" name="getNumberOfAllPassesBoughtOnDate">
+    </wsdl:input>
+      <wsdl:output message="tns:getNumberOfAllPassesBoughtOnDateResponse" name="getNumberOfAllPassesBoughtOnDateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumberOfSpecificPassBoughtOnDate">
+      <wsdl:input message="tns:getNumberOfSpecificPassBoughtOnDate" name="getNumberOfSpecificPassBoughtOnDate">
+    </wsdl:input>
+      <wsdl:output message="tns:getNumberOfSpecificPassBoughtOnDateResponse" name="getNumberOfSpecificPassBoughtOnDateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="detailedPurchaseStatisticsByDate">
+      <wsdl:input message="tns:detailedPurchaseStatisticsByDate" name="detailedPurchaseStatisticsByDate">
+    </wsdl:input>
+      <wsdl:output message="tns:detailedPurchaseStatisticsByDateResponse" name="detailedPurchaseStatisticsByDateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumberOfSuperCartexBoughtOnDate">
+      <wsdl:input message="tns:getNumberOfSuperCartexBoughtOnDate" name="getNumberOfSuperCartexBoughtOnDate">
+    </wsdl:input>
+      <wsdl:output message="tns:getNumberOfSuperCartexBoughtOnDateResponse" name="getNumberOfSuperCartexBoughtOnDateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumberOfCardsBoughtOnDate">
+      <wsdl:input message="tns:getNumberOfCardsBoughtOnDate" name="getNumberOfCardsBoughtOnDate">
+    </wsdl:input>
+      <wsdl:output message="tns:getNumberOfCardsBoughtOnDateResponse" name="getNumberOfCardsBoughtOnDateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumberOfChildPassesBoughtOnDate">
+      <wsdl:input message="tns:getNumberOfChildPassesBoughtOnDate" name="getNumberOfChildPassesBoughtOnDate">
+    </wsdl:input>
+      <wsdl:output message="tns:getNumberOfChildPassesBoughtOnDateResponse" name="getNumberOfChildPassesBoughtOnDateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PurchaseStatisticsWebServiceImplServiceSoapBinding" type="tns:PurchaseStatisticsWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getNumberOfSpecificPassBoughtOnDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNumberOfSpecificPassBoughtOnDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNumberOfSpecificPassBoughtOnDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumberOfAllPassesBoughtOnDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNumberOfAllPassesBoughtOnDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNumberOfAllPassesBoughtOnDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="detailedPurchaseStatisticsByDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="detailedPurchaseStatisticsByDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="detailedPurchaseStatisticsByDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumberOfSuperCartexBoughtOnDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNumberOfSuperCartexBoughtOnDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNumberOfSuperCartexBoughtOnDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumberOfCardsBoughtOnDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNumberOfCardsBoughtOnDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNumberOfCardsBoughtOnDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumberOfChildPassesBoughtOnDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNumberOfChildPassesBoughtOnDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNumberOfChildPassesBoughtOnDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PurchaseStatisticsWebServiceImplService">
+    <wsdl:port binding="tns:PurchaseStatisticsWebServiceImplServiceSoapBinding" name="PurchaseStatisticsWebServiceImplPort">
+      <soap:address location="http://localhost:8080/statistics-server/PurchaseStatisticsWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

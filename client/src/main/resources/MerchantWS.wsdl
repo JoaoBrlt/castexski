@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/merchant" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="MerchantServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/merchant">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/merchant" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/merchant">
+  <xs:element name="getMerchantBusiness" type="tns:getMerchantBusiness"/>
+  <xs:element name="getMerchantBusinessResponse" type="tns:getMerchantBusinessResponse"/>
+  <xs:element name="merchantExists" type="tns:merchantExists"/>
+  <xs:element name="merchantExistsResponse" type="tns:merchantExistsResponse"/>
+  <xs:element name="registerMerchant" type="tns:registerMerchant"/>
+  <xs:element name="registerMerchantResponse" type="tns:registerMerchantResponse"/>
+  <xs:element name="removeMerchant" type="tns:removeMerchant"/>
+  <xs:element name="removeMerchantResponse" type="tns:removeMerchantResponse"/>
+  <xs:element name="subscribeMerchantToResort" type="tns:subscribeMerchantToResort"/>
+  <xs:element name="subscribeMerchantToResortResponse" type="tns:subscribeMerchantToResortResponse"/>
+  <xs:element name="unsubscribeMerchantFromResort" type="tns:unsubscribeMerchantFromResort"/>
+  <xs:element name="unsubscribeMerchantFromResortResponse" type="tns:unsubscribeMerchantFromResortResponse"/>
+  <xs:complexType name="subscribeMerchantToResort">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="resortName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="subscribeMerchantToResortResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="registerMerchant">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="business" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="registerMerchantResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="merchantExists">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="merchantExistsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeMerchant">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeMerchantResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getMerchantBusiness">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMerchantBusinessResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unsubscribeMerchantFromResort">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="resortName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unsubscribeMerchantFromResortResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="MerchantNotFoundException" type="tns:MerchantNotFoundException"/>
+  <xs:complexType name="MerchantNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnavailableEmailException" type="tns:UnavailableEmailException"/>
+  <xs:complexType name="UnavailableEmailException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="conflictingMail" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="subscribeMerchantToResortResponse">
+    <wsdl:part element="tns:subscribeMerchantToResortResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerMerchantResponse">
+    <wsdl:part element="tns:registerMerchantResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerMerchant">
+    <wsdl:part element="tns:registerMerchant" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="merchantExists">
+    <wsdl:part element="tns:merchantExists" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeMerchant">
+    <wsdl:part element="tns:removeMerchant" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MerchantNotFoundException">
+    <wsdl:part element="tns:MerchantNotFoundException" name="MerchantNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="merchantExistsResponse">
+    <wsdl:part element="tns:merchantExistsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscribeMerchantToResort">
+    <wsdl:part element="tns:subscribeMerchantToResort" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="unsubscribeMerchantFromResortResponse">
+    <wsdl:part element="tns:unsubscribeMerchantFromResortResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeMerchantResponse">
+    <wsdl:part element="tns:removeMerchantResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMerchantBusiness">
+    <wsdl:part element="tns:getMerchantBusiness" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="unsubscribeMerchantFromResort">
+    <wsdl:part element="tns:unsubscribeMerchantFromResort" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMerchantBusinessResponse">
+    <wsdl:part element="tns:getMerchantBusinessResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnavailableEmailException">
+    <wsdl:part element="tns:UnavailableEmailException" name="UnavailableEmailException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MerchantService">
+    <wsdl:operation name="subscribeMerchantToResort">
+      <wsdl:input message="tns:subscribeMerchantToResort" name="subscribeMerchantToResort">
+    </wsdl:input>
+      <wsdl:output message="tns:subscribeMerchantToResortResponse" name="subscribeMerchantToResortResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MerchantNotFoundException" name="MerchantNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerMerchant">
+      <wsdl:input message="tns:registerMerchant" name="registerMerchant">
+    </wsdl:input>
+      <wsdl:output message="tns:registerMerchantResponse" name="registerMerchantResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnavailableEmailException" name="UnavailableEmailException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="merchantExists">
+      <wsdl:input message="tns:merchantExists" name="merchantExists">
+    </wsdl:input>
+      <wsdl:output message="tns:merchantExistsResponse" name="merchantExistsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeMerchant">
+      <wsdl:input message="tns:removeMerchant" name="removeMerchant">
+    </wsdl:input>
+      <wsdl:output message="tns:removeMerchantResponse" name="removeMerchantResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MerchantNotFoundException" name="MerchantNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMerchantBusiness">
+      <wsdl:input message="tns:getMerchantBusiness" name="getMerchantBusiness">
+    </wsdl:input>
+      <wsdl:output message="tns:getMerchantBusinessResponse" name="getMerchantBusinessResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MerchantNotFoundException" name="MerchantNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="unsubscribeMerchantFromResort">
+      <wsdl:input message="tns:unsubscribeMerchantFromResort" name="unsubscribeMerchantFromResort">
+    </wsdl:input>
+      <wsdl:output message="tns:unsubscribeMerchantFromResortResponse" name="unsubscribeMerchantFromResortResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MerchantNotFoundException" name="MerchantNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MerchantServiceImplServiceSoapBinding" type="tns:MerchantService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="subscribeMerchantToResort">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="subscribeMerchantToResort">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="subscribeMerchantToResortResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MerchantNotFoundException">
+        <soap:fault name="MerchantNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerMerchant">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="registerMerchant">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerMerchantResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnavailableEmailException">
+        <soap:fault name="UnavailableEmailException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="merchantExists">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="merchantExists">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="merchantExistsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeMerchant">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeMerchant">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeMerchantResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MerchantNotFoundException">
+        <soap:fault name="MerchantNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMerchantBusiness">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMerchantBusiness">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMerchantBusinessResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MerchantNotFoundException">
+        <soap:fault name="MerchantNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="unsubscribeMerchantFromResort">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="unsubscribeMerchantFromResort">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="unsubscribeMerchantFromResortResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MerchantNotFoundException">
+        <soap:fault name="MerchantNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MerchantServiceImplService">
+    <wsdl:port binding="tns:MerchantServiceImplServiceSoapBinding" name="MerchantServiceImplPort">
+      <soap:address location="http://localhost:8080/merchant-server/MerchantWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

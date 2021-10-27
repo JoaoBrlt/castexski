@@ -1,0 +1,31 @@
+# link cards to physical ones and passes to these cards
+
+linkCard ludovic.marti@poly.fr Super-Cartex-demo 0123456789101112
+login ludovic.marti@poly.fr
+    displayPasses
+exit
+
+linkCard ryana.karaki@poly.fr Cartex-demo 0112358132134558
+login ryana.karaki@poly.fr
+    linkPass Discovery-demo 72 false 0112358132134558
+    displayCards
+exit
+
+linkCard valentin.roccelli@poly.fr Cartex-demo-2 0000000011111111
+login valentin.roccelli@poly.fr
+    linkPass Expert-demo 120 true 0000000011111111
+exit
+
+linkCard joao.brilhante@poly.fr Cartex-demo 0000000022222222
+login joao.brilhante@poly.fr
+    linkPass Training-demo 24 false 0000000022222222
+exit
+
+linkCard armand.fargeon@poly.fr Cartex-demo-2 0000000033333333
+linkCard armand.fargeon@poly.fr Cartex-demo 0000000044444444
+linkCard armand.fargeon@poly.fr Cartex-demo 0000000055555555
+login armand.fargeon@poly.fr
+    linkPass Expert-demo 72 false 0000000033333333
+    linkPass Training-demo 72 true 0000000044444444
+    linkPass Training-demo 72 true 0000000055555555
+exit

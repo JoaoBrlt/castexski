@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.unice.polytech.isa</groupId>
+    <artifactId>client</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>CastexSki Client</name>
+
+    <properties>
+        <!-- General. -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <versions.java>1.8</versions.java>
+
+        <!-- Plugins. -->
+        <versions.maven.jar>3.2.0</versions.maven.jar>
+        <versions.maven.compiler>3.6.1</versions.maven.compiler>
+        <versions.maven.assembly>3.3.0</versions.maven.assembly>
+        <versions.artifactory>3.2.0</versions.artifactory>
+        <versions.exec>1.5.0</versions.exec>
+        <versions.cxf>3.1.10</versions.cxf>
+
+        <!-- Tests. -->
+        <versions.cukespace>1.6.5</versions.cukespace>
+        <versions.arquillian.junit>1.1.12.Final</versions.arquillian.junit>
+
+        <!-- Execution. -->
+        <execution.class>Main</execution.class>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.cukespace</groupId>
+            <artifactId>cukespace-core</artifactId>
+            <version>${versions.cukespace}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <version>${versions.arquillian.junit}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Artifactory repositories. -->
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>Team F-releases</name>
+            <url>{artifactory.url}/team-f-libs-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Team F-snapshots</name>
+            <url>{artifactory.url}/team-f-libs-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- JFrog plugins. -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jfrog-plugins-release</id>
+            <name>plugins-release</name>
+            <url>https://oss.jfrog.org/artifactory/plugins-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <plugins>
+            <!-- Java Archive. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${versions.maven.jar}</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>none</phase>
+                        <configuration>
+                            <finalName>unwanted</finalName>
+                            <classifier>unwanted</classifier>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Compiler. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${versions.maven.compiler}</version>
+                <configuration>
+                    <source>${versions.java}</source>
+                    <target>${versions.java}</target>
+                    <compilerArguments>
+                        <bootclasspath>${java.home}/lib/rt.jar</bootclasspath>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+
+            <!-- Assembly. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${versions.maven.assembly}</version>
+                <configuration>
+                    <finalName>client</finalName>
+                    <archive>
+                        <manifest>
+                            <mainClass>${execution.class}</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Execution. -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${versions.exec}</version>
+                <configuration>
+                    <mainClass>${execution.class}</mainClass>
+                </configuration>
+            </plugin>
+
+            <!-- SOAP Web Services. -->
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${versions.cxf}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${basedir}/src/main/java/</sourceRoot>
+                            <wsdlOptions>
+                                <!-- Catalog Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/CatalogWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/catalog=stubs.catalog</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Cart Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/CartWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/shopping=stubs.shopping</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- User Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/UserWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/user=stubs.user</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Customer Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/CustomerWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/customer=stubs.customer</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Merchant Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/MerchantWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/merchant=stubs.merchant</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Card Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/CardWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/card=stubs.card</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Pass Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/PassWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/pass=stubs.pass</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Access Adding Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/AccessAddingWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/accessadding=stubs.accessAdding</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Access Checking Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/AccessCheckingWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/accesschecking=stubs.accessChecking</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Resort Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/ResortWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/resort=stubs.resort</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Purchase Statistics Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/PurchaseStatisticsWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/purchasestatistics=stubs.purchasestatistics</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Presence Statistics Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/PresenceStatisticsWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/presencestatistics=stubs.presencestatistics</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Notification Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/NotificationWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/notification=stubs.notification</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+
+                                <!-- Display Panel Web Service. -->
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/DisplayPanelWS.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>http://www.polytech.unice.fr/isa/castexski/displaypanel=stubs.displaypanel</extraarg>
+                                        <extraarg>-autoNameResolution</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Artifactory. -->
+            <plugin>
+                <groupId>org.jfrog.buildinfo</groupId>
+                <artifactId>artifactory-maven-plugin</artifactId>
+                <version>${versions.artifactory}</version>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <deployProperties>
+                                <gradle>awesome</gradle>
+                            </deployProperties>
+                            <artifactory>
+                                <includeEnvVars>true</includeEnvVars>
+                                <envVarsExcludePatterns>*password*,*secret*,*key*,*token*,*passphrase*</envVarsExcludePatterns>
+                                <timeoutSec>60</timeoutSec>
+                            </artifactory>
+                            <publisher>
+                                <contextUrl>${artifactory.url}</contextUrl>
+                                <username>${artifactory.username}</username>
+                                <password>${artifactory.password}</password>
+                                <excludePatterns>*-tests.jar</excludePatterns>
+                                <repoKey>team-f-libs-release</repoKey>
+                                <snapshotRepoKey>team-f-libs-snapshot</snapshotRepoKey>
+                            </publisher>
+                            <buildInfo>
+                                <buildName>${project.artifactId}</buildName>
+                                <buildNumber>${project.version}</buildNumber>
+                                <buildUrl>${artifactory.url}/artifactory-build-info</buildUrl>
+                            </buildInfo>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

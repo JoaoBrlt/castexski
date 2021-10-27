@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/accesschecking" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="AccessCheckingServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/accesschecking">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/accesschecking" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/accesschecking">
+  <xs:element name="checkCard" type="tns:checkCard"/>
+  <xs:element name="checkCardResponse" type="tns:checkCardResponse"/>
+  <xs:complexType name="checkCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="liftId" type="xs:string"/>
+      <xs:element minOccurs="0" name="physicalCardId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkCardResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SkiLiftNotFoundException" type="tns:SkiLiftNotFoundException"/>
+  <xs:complexType name="SkiLiftNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardNotFoundException" type="tns:CardNotFoundException"/>
+  <xs:complexType name="CardNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="checkCard">
+    <wsdl:part element="tns:checkCard" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SkiLiftNotFoundException">
+    <wsdl:part element="tns:SkiLiftNotFoundException" name="SkiLiftNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkCardResponse">
+    <wsdl:part element="tns:checkCardResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CardNotFoundException">
+    <wsdl:part element="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AccessCheckingService">
+    <wsdl:operation name="checkCard">
+      <wsdl:input message="tns:checkCard" name="checkCard">
+    </wsdl:input>
+      <wsdl:output message="tns:checkCardResponse" name="checkCardResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SkiLiftNotFoundException" name="SkiLiftNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AccessCheckingServiceImplServiceSoapBinding" type="tns:AccessCheckingService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="checkCard">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SkiLiftNotFoundException">
+        <soap:fault name="SkiLiftNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccessCheckingServiceImplService">
+    <wsdl:port binding="tns:AccessCheckingServiceImplServiceSoapBinding" name="AccessCheckingServiceImplPort">
+      <soap:address location="http://localhost:8080/resort-server/AccessCheckingWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

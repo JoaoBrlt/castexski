@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/customer" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CustomerServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/customer">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/customer" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/customer">
+  <xs:element name="deleteCustomer" type="tns:deleteCustomer"/>
+  <xs:element name="deleteCustomerResponse" type="tns:deleteCustomerResponse"/>
+  <xs:element name="exists" type="tns:exists"/>
+  <xs:element name="existsResponse" type="tns:existsResponse"/>
+  <xs:element name="getCreditCardDate" type="tns:getCreditCardDate"/>
+  <xs:element name="getCreditCardDateResponse" type="tns:getCreditCardDateResponse"/>
+  <xs:element name="getCreditCardName" type="tns:getCreditCardName"/>
+  <xs:element name="getCreditCardNameResponse" type="tns:getCreditCardNameResponse"/>
+  <xs:element name="getCreditCardNumber" type="tns:getCreditCardNumber"/>
+  <xs:element name="getCreditCardNumberResponse" type="tns:getCreditCardNumberResponse"/>
+  <xs:element name="getUserFullName" type="tns:getUserFullName"/>
+  <xs:element name="getUserFullNameResponse" type="tns:getUserFullNameResponse"/>
+  <xs:element name="hasCreditCard" type="tns:hasCreditCard"/>
+  <xs:element name="hasCreditCardResponse" type="tns:hasCreditCardResponse"/>
+  <xs:element name="register" type="tns:register"/>
+  <xs:element name="registerResponse" type="tns:registerResponse"/>
+  <xs:complexType name="hasCreditCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="hasCreditCardResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="register">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="registerResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="exists">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="existsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCustomerResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getUserFullName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserFullNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCreditCardDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCreditCardDateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCreditCardNumber">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCreditCardNumberResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCreditCardName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCreditCardNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerNotFoundException" type="tns:CustomerNotFoundException"/>
+  <xs:complexType name="CustomerNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnavailableEmailException" type="tns:UnavailableEmailException"/>
+  <xs:complexType name="UnavailableEmailException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="conflictingMail" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CustomerNotFoundException">
+    <wsdl:part element="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnavailableEmailException">
+    <wsdl:part element="tns:UnavailableEmailException" name="UnavailableEmailException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hasCreditCard">
+    <wsdl:part element="tns:hasCreditCard" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCustomer">
+    <wsdl:part element="tns:deleteCustomer" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCreditCardDateResponse">
+    <wsdl:part element="tns:getCreditCardDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="existsResponse">
+    <wsdl:part element="tns:existsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserFullNameResponse">
+    <wsdl:part element="tns:getUserFullNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCreditCardNumberResponse">
+    <wsdl:part element="tns:getCreditCardNumberResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCustomerResponse">
+    <wsdl:part element="tns:deleteCustomerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="register">
+    <wsdl:part element="tns:register" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="exists">
+    <wsdl:part element="tns:exists" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserFullName">
+    <wsdl:part element="tns:getUserFullName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCreditCardDate">
+    <wsdl:part element="tns:getCreditCardDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCreditCardNumber">
+    <wsdl:part element="tns:getCreditCardNumber" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hasCreditCardResponse">
+    <wsdl:part element="tns:hasCreditCardResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerResponse">
+    <wsdl:part element="tns:registerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCreditCardName">
+    <wsdl:part element="tns:getCreditCardName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCreditCardNameResponse">
+    <wsdl:part element="tns:getCreditCardNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CustomerService">
+    <wsdl:operation name="hasCreditCard">
+      <wsdl:input message="tns:hasCreditCard" name="hasCreditCard">
+    </wsdl:input>
+      <wsdl:output message="tns:hasCreditCardResponse" name="hasCreditCardResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <wsdl:input message="tns:register" name="register">
+    </wsdl:input>
+      <wsdl:output message="tns:registerResponse" name="registerResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnavailableEmailException" name="UnavailableEmailException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="exists">
+      <wsdl:input message="tns:exists" name="exists">
+    </wsdl:input>
+      <wsdl:output message="tns:existsResponse" name="existsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomer">
+      <wsdl:input message="tns:deleteCustomer" name="deleteCustomer">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteCustomerResponse" name="deleteCustomerResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFullName">
+      <wsdl:input message="tns:getUserFullName" name="getUserFullName">
+    </wsdl:input>
+      <wsdl:output message="tns:getUserFullNameResponse" name="getUserFullNameResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCreditCardDate">
+      <wsdl:input message="tns:getCreditCardDate" name="getCreditCardDate">
+    </wsdl:input>
+      <wsdl:output message="tns:getCreditCardDateResponse" name="getCreditCardDateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCreditCardNumber">
+      <wsdl:input message="tns:getCreditCardNumber" name="getCreditCardNumber">
+    </wsdl:input>
+      <wsdl:output message="tns:getCreditCardNumberResponse" name="getCreditCardNumberResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCreditCardName">
+      <wsdl:input message="tns:getCreditCardName" name="getCreditCardName">
+    </wsdl:input>
+      <wsdl:output message="tns:getCreditCardNameResponse" name="getCreditCardNameResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerServiceImplServiceSoapBinding" type="tns:CustomerService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="hasCreditCard">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="hasCreditCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="hasCreditCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="register">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnavailableEmailException">
+        <soap:fault name="UnavailableEmailException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="exists">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="exists">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="existsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFullName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserFullName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserFullNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCreditCardDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCreditCardDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCreditCardDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCreditCardNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCreditCardNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCreditCardNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCreditCardName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCreditCardName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCreditCardNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerServiceImplService">
+    <wsdl:port binding="tns:CustomerServiceImplServiceSoapBinding" name="CustomerServiceImplPort">
+      <soap:address location="http://localhost:8080/account-server/CustomerWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

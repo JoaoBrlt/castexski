@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/notification" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="NotificationServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/notification">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/notification" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/notification">
+  <xs:element name="addNotification" type="tns:addNotification"/>
+  <xs:element name="addNotificationResponse" type="tns:addNotificationResponse"/>
+  <xs:element name="notificationExists" type="tns:notificationExists"/>
+  <xs:element name="notificationExistsResponse" type="tns:notificationExistsResponse"/>
+  <xs:element name="removeNotification" type="tns:removeNotification"/>
+  <xs:element name="removeNotificationResponse" type="tns:removeNotificationResponse"/>
+  <xs:complexType name="notificationExists">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="notificationExistsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeNotification">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeNotificationResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="addNotification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="channel" type="xs:string"/>
+      <xs:element minOccurs="0" name="triggerType" type="xs:string"/>
+      <xs:element minOccurs="0" name="triggerParameter" type="xs:string"/>
+      <xs:element minOccurs="0" name="triggerCoolDown" type="xs:string"/>
+      <xs:element minOccurs="0" name="weatherParameter" type="xs:string"/>
+      <xs:element minOccurs="0" name="target" type="xs:string"/>
+      <xs:element minOccurs="0" name="targetParameter" type="xs:string"/>
+      <xs:element minOccurs="0" name="resortName" type="xs:string"/>
+      <xs:element minOccurs="0" name="subject" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addNotificationResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NotificationNotFoundException" type="tns:NotificationNotFoundException"/>
+  <xs:complexType name="NotificationNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identifier" type="xs:int"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidNotificationException" type="tns:InvalidNotificationException"/>
+  <xs:complexType name="InvalidNotificationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="removeNotificationResponse">
+    <wsdl:part element="tns:removeNotificationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NotificationNotFoundException">
+    <wsdl:part element="tns:NotificationNotFoundException" name="NotificationNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addNotificationResponse">
+    <wsdl:part element="tns:addNotificationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidNotificationException">
+    <wsdl:part element="tns:InvalidNotificationException" name="InvalidNotificationException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notificationExistsResponse">
+    <wsdl:part element="tns:notificationExistsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notificationExists">
+    <wsdl:part element="tns:notificationExists" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeNotification">
+    <wsdl:part element="tns:removeNotification" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addNotification">
+    <wsdl:part element="tns:addNotification" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="NotificationService">
+    <wsdl:operation name="notificationExists">
+      <wsdl:input message="tns:notificationExists" name="notificationExists">
+    </wsdl:input>
+      <wsdl:output message="tns:notificationExistsResponse" name="notificationExistsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeNotification">
+      <wsdl:input message="tns:removeNotification" name="removeNotification">
+    </wsdl:input>
+      <wsdl:output message="tns:removeNotificationResponse" name="removeNotificationResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:NotificationNotFoundException" name="NotificationNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addNotification">
+      <wsdl:input message="tns:addNotification" name="addNotification">
+    </wsdl:input>
+      <wsdl:output message="tns:addNotificationResponse" name="addNotificationResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidNotificationException" name="InvalidNotificationException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NotificationServiceImplServiceSoapBinding" type="tns:NotificationService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="notificationExists">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="notificationExists">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="notificationExistsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeNotification">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeNotification">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeNotificationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NotificationNotFoundException">
+        <soap:fault name="NotificationNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addNotification">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addNotification">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addNotificationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidNotificationException">
+        <soap:fault name="InvalidNotificationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NotificationServiceImplService">
+    <wsdl:port binding="tns:NotificationServiceImplServiceSoapBinding" name="NotificationServiceImplPort">
+      <soap:address location="http://localhost:8080/notification-server/NotificationWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

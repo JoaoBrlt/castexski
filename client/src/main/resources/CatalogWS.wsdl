@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/catalog" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CatalogWebServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/catalog">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/catalog" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/catalog">
+  <xs:element name="addCard" type="tns:addCard"/>
+  <xs:element name="addCardResponse" type="tns:addCardResponse"/>
+  <xs:element name="addPass" type="tns:addPass"/>
+  <xs:element name="addPassResponse" type="tns:addPassResponse"/>
+  <xs:element name="deleteCard" type="tns:deleteCard"/>
+  <xs:element name="deleteCardResponse" type="tns:deleteCardResponse"/>
+  <xs:element name="deletePass" type="tns:deletePass"/>
+  <xs:element name="deletePassResponse" type="tns:deletePassResponse"/>
+  <xs:element name="displayCatalog" type="tns:displayCatalog"/>
+  <xs:element name="displayCatalogResponse" type="tns:displayCatalogResponse"/>
+  <xs:element name="getEntryChildrenPriceById" type="tns:getEntryChildrenPriceById"/>
+  <xs:element name="getEntryChildrenPriceByIdResponse" type="tns:getEntryChildrenPriceByIdResponse"/>
+  <xs:element name="getEntryNameById" type="tns:getEntryNameById"/>
+  <xs:element name="getEntryNameByIdResponse" type="tns:getEntryNameByIdResponse"/>
+  <xs:element name="getEntryRegularPriceById" type="tns:getEntryRegularPriceById"/>
+  <xs:element name="getEntryRegularPriceByIdResponse" type="tns:getEntryRegularPriceByIdResponse"/>
+  <xs:element name="getEntryTypeById" type="tns:getEntryTypeById"/>
+  <xs:element name="getEntryTypeByIdResponse" type="tns:getEntryTypeByIdResponse"/>
+  <xs:element name="getPassDurationById" type="tns:getPassDurationById"/>
+  <xs:element name="getPassDurationByIdResponse" type="tns:getPassDurationByIdResponse"/>
+  <xs:element name="isCardById" type="tns:isCardById"/>
+  <xs:element name="isCardByIdResponse" type="tns:isCardByIdResponse"/>
+  <xs:element name="isPassById" type="tns:isPassById"/>
+  <xs:element name="isPassByIdResponse" type="tns:isPassByIdResponse"/>
+  <xs:element name="isSuperCartexById" type="tns:isSuperCartexById"/>
+  <xs:element name="isSuperCartexByIdResponse" type="tns:isSuperCartexByIdResponse"/>
+  <xs:complexType name="getEntryRegularPriceById">
+    <xs:sequence>
+      <xs:element name="entryId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntryRegularPriceByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deletePass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="passName" type="xs:string"/>
+      <xs:element minOccurs="0" name="duration" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deletePassResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="isSuperCartexById">
+    <xs:sequence>
+      <xs:element name="entryId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isSuperCartexByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardName" type="xs:string"/>
+      <xs:element name="isSuperCartex" type="xs:boolean"/>
+      <xs:element name="price" type="xs:double"/>
+      <xs:element name="isPrivateItem" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCardResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="displayCatalog">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="displayCatalogResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassDurationById">
+    <xs:sequence>
+      <xs:element name="entryId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPassDurationByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isCardById">
+    <xs:sequence>
+      <xs:element name="entryId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isCardByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardName" type="xs:string"/>
+      <xs:element name="isSuperCartex" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCardResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getEntryTypeById">
+    <xs:sequence>
+      <xs:element name="entryId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntryTypeByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addPass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="passName" type="xs:string"/>
+      <xs:element name="regularPrice" type="xs:double"/>
+      <xs:element name="childrenPrice" type="xs:double"/>
+      <xs:element minOccurs="0" name="durationInDays" type="xs:string"/>
+      <xs:element name="isPrivateItem" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addPassResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="isPassById">
+    <xs:sequence>
+      <xs:element name="entryId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isPassByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntryNameById">
+    <xs:sequence>
+      <xs:element name="entryId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntryNameByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntryChildrenPriceById">
+    <xs:sequence>
+      <xs:element name="entryId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntryChildrenPriceByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnknownCatalogEntryException" type="tns:UnknownCatalogEntryException"/>
+  <xs:complexType name="UnknownCatalogEntryException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ItemAlreadyExistException" type="tns:ItemAlreadyExistException"/>
+  <xs:complexType name="ItemAlreadyExistException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="item" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="isSuperCartexById">
+    <wsdl:part element="tns:isSuperCartexById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCard">
+    <wsdl:part element="tns:addCard" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isPassByIdResponse">
+    <wsdl:part element="tns:isPassByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayCatalog">
+    <wsdl:part element="tns:displayCatalog" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassDurationById">
+    <wsdl:part element="tns:getPassDurationById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntryChildrenPriceByIdResponse">
+    <wsdl:part element="tns:getEntryChildrenPriceByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntryTypeById">
+    <wsdl:part element="tns:getEntryTypeById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPassResponse">
+    <wsdl:part element="tns:addPassResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntryRegularPriceByIdResponse">
+    <wsdl:part element="tns:getEntryRegularPriceByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPass">
+    <wsdl:part element="tns:addPass" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntryTypeByIdResponse">
+    <wsdl:part element="tns:getEntryTypeByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnknownCatalogEntryException">
+    <wsdl:part element="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntryNameById">
+    <wsdl:part element="tns:getEntryNameById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCardResponse">
+    <wsdl:part element="tns:deleteCardResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntryRegularPriceById">
+    <wsdl:part element="tns:getEntryRegularPriceById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ItemAlreadyExistException">
+    <wsdl:part element="tns:ItemAlreadyExistException" name="ItemAlreadyExistException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePass">
+    <wsdl:part element="tns:deletePass" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="displayCatalogResponse">
+    <wsdl:part element="tns:displayCatalogResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isCardById">
+    <wsdl:part element="tns:isCardById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassDurationByIdResponse">
+    <wsdl:part element="tns:getPassDurationByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCard">
+    <wsdl:part element="tns:deleteCard" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePassResponse">
+    <wsdl:part element="tns:deletePassResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isPassById">
+    <wsdl:part element="tns:isPassById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntryNameByIdResponse">
+    <wsdl:part element="tns:getEntryNameByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isCardByIdResponse">
+    <wsdl:part element="tns:isCardByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isSuperCartexByIdResponse">
+    <wsdl:part element="tns:isSuperCartexByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntryChildrenPriceById">
+    <wsdl:part element="tns:getEntryChildrenPriceById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCardResponse">
+    <wsdl:part element="tns:addCardResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CatalogWebService">
+    <wsdl:operation name="getEntryRegularPriceById">
+      <wsdl:input message="tns:getEntryRegularPriceById" name="getEntryRegularPriceById">
+    </wsdl:input>
+      <wsdl:output message="tns:getEntryRegularPriceByIdResponse" name="getEntryRegularPriceByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deletePass">
+      <wsdl:input message="tns:deletePass" name="deletePass">
+    </wsdl:input>
+      <wsdl:output message="tns:deletePassResponse" name="deletePassResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isSuperCartexById">
+      <wsdl:input message="tns:isSuperCartexById" name="isSuperCartexById">
+    </wsdl:input>
+      <wsdl:output message="tns:isSuperCartexByIdResponse" name="isSuperCartexByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addCard">
+      <wsdl:input message="tns:addCard" name="addCard">
+    </wsdl:input>
+      <wsdl:output message="tns:addCardResponse" name="addCardResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemAlreadyExistException" name="ItemAlreadyExistException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="displayCatalog">
+      <wsdl:input message="tns:displayCatalog" name="displayCatalog">
+    </wsdl:input>
+      <wsdl:output message="tns:displayCatalogResponse" name="displayCatalogResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPassDurationById">
+      <wsdl:input message="tns:getPassDurationById" name="getPassDurationById">
+    </wsdl:input>
+      <wsdl:output message="tns:getPassDurationByIdResponse" name="getPassDurationByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isCardById">
+      <wsdl:input message="tns:isCardById" name="isCardById">
+    </wsdl:input>
+      <wsdl:output message="tns:isCardByIdResponse" name="isCardByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCard">
+      <wsdl:input message="tns:deleteCard" name="deleteCard">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteCardResponse" name="deleteCardResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntryTypeById">
+      <wsdl:input message="tns:getEntryTypeById" name="getEntryTypeById">
+    </wsdl:input>
+      <wsdl:output message="tns:getEntryTypeByIdResponse" name="getEntryTypeByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addPass">
+      <wsdl:input message="tns:addPass" name="addPass">
+    </wsdl:input>
+      <wsdl:output message="tns:addPassResponse" name="addPassResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ItemAlreadyExistException" name="ItemAlreadyExistException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isPassById">
+      <wsdl:input message="tns:isPassById" name="isPassById">
+    </wsdl:input>
+      <wsdl:output message="tns:isPassByIdResponse" name="isPassByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntryNameById">
+      <wsdl:input message="tns:getEntryNameById" name="getEntryNameById">
+    </wsdl:input>
+      <wsdl:output message="tns:getEntryNameByIdResponse" name="getEntryNameByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntryChildrenPriceById">
+      <wsdl:input message="tns:getEntryChildrenPriceById" name="getEntryChildrenPriceById">
+    </wsdl:input>
+      <wsdl:output message="tns:getEntryChildrenPriceByIdResponse" name="getEntryChildrenPriceByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownCatalogEntryException" name="UnknownCatalogEntryException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CatalogWebServiceImplServiceSoapBinding" type="tns:CatalogWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getEntryRegularPriceById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEntryRegularPriceById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEntryRegularPriceByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deletePass">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deletePass">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deletePassResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isSuperCartexById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isSuperCartexById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isSuperCartexByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addCard">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemAlreadyExistException">
+        <soap:fault name="ItemAlreadyExistException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="displayCatalog">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="displayCatalog">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="displayCatalogResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPassDurationById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPassDurationById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPassDurationByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isCardById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isCardById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isCardByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCard">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntryTypeById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEntryTypeById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEntryTypeByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addPass">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addPass">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPassResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ItemAlreadyExistException">
+        <soap:fault name="ItemAlreadyExistException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isPassById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isPassById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isPassByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntryNameById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEntryNameById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEntryNameByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntryChildrenPriceById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEntryChildrenPriceById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEntryChildrenPriceByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCatalogEntryException">
+        <soap:fault name="UnknownCatalogEntryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CatalogWebServiceImplService">
+    <wsdl:port binding="tns:CatalogWebServiceImplServiceSoapBinding" name="CatalogWebServiceImplPort">
+      <soap:address location="http://localhost:8080/shopping-server/CatalogWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

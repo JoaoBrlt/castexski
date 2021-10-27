@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/accessadding" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="AccessAddingServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/accessadding">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/accessadding" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/accessadding">
+  <xs:element name="addAccess" type="tns:addAccess"/>
+  <xs:element name="addAccessResponse" type="tns:addAccessResponse"/>
+  <xs:complexType name="addAccess">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addAccessResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="ResortNotFoundException" type="tns:ResortNotFoundException"/>
+  <xs:complexType name="ResortNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PassNotFoundException" type="tns:PassNotFoundException"/>
+  <xs:complexType name="PassNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SkiLiftNotFoundException" type="tns:SkiLiftNotFoundException"/>
+  <xs:complexType name="SkiLiftNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ResortNotFoundException">
+    <wsdl:part element="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addAccessResponse">
+    <wsdl:part element="tns:addAccessResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PassNotFoundException">
+    <wsdl:part element="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SkiLiftNotFoundException">
+    <wsdl:part element="tns:SkiLiftNotFoundException" name="SkiLiftNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addAccess">
+    <wsdl:part element="tns:addAccess" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AccessAddingService">
+    <wsdl:operation name="addAccess">
+      <wsdl:input message="tns:addAccess" name="addAccess">
+    </wsdl:input>
+      <wsdl:output message="tns:addAccessResponse" name="addAccessResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SkiLiftNotFoundException" name="SkiLiftNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ResortNotFoundException" name="ResortNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AccessAddingServiceImplServiceSoapBinding" type="tns:AccessAddingService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addAccess">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addAccess">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addAccessResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SkiLiftNotFoundException">
+        <soap:fault name="SkiLiftNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ResortNotFoundException">
+        <soap:fault name="ResortNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccessAddingServiceImplService">
+    <wsdl:port binding="tns:AccessAddingServiceImplServiceSoapBinding" name="AccessAddingServiceImplPort">
+      <soap:address location="http://localhost:8080/resort-server/AccessAddingWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

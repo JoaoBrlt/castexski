@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/card" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CardServiceImplService" targetNamespace="http://www.polytech.unice.fr/isa/castexski/card">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/isa/castexski/card" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/isa/castexski/card">
+  <xs:element name="getCardIdByPhysicalId" type="tns:getCardIdByPhysicalId"/>
+  <xs:element name="getCardIdByPhysicalIdResponse" type="tns:getCardIdByPhysicalIdResponse"/>
+  <xs:element name="getCardNameById" type="tns:getCardNameById"/>
+  <xs:element name="getCardNameByIdResponse" type="tns:getCardNameByIdResponse"/>
+  <xs:element name="getCardPriceById" type="tns:getCardPriceById"/>
+  <xs:element name="getCardPriceByIdResponse" type="tns:getCardPriceByIdResponse"/>
+  <xs:element name="getCardTypeById" type="tns:getCardTypeById"/>
+  <xs:element name="getCardTypeByIdResponse" type="tns:getCardTypeByIdResponse"/>
+  <xs:element name="getCardsNotPhysicallyLinked" type="tns:getCardsNotPhysicallyLinked"/>
+  <xs:element name="getCardsNotPhysicallyLinkedResponse" type="tns:getCardsNotPhysicallyLinkedResponse"/>
+  <xs:element name="getCardsPhysicallyLinked" type="tns:getCardsPhysicallyLinked"/>
+  <xs:element name="getCardsPhysicallyLinkedResponse" type="tns:getCardsPhysicallyLinkedResponse"/>
+  <xs:element name="getLinkedPassIdByCardId" type="tns:getLinkedPassIdByCardId"/>
+  <xs:element name="getLinkedPassIdByCardIdResponse" type="tns:getLinkedPassIdByCardIdResponse"/>
+  <xs:element name="getPhysicalCardIdById" type="tns:getPhysicalCardIdById"/>
+  <xs:element name="getPhysicalCardIdByIdResponse" type="tns:getPhysicalCardIdByIdResponse"/>
+  <xs:element name="isCardLinkedWPassById" type="tns:isCardLinkedWPassById"/>
+  <xs:element name="isCardLinkedWPassByIdResponse" type="tns:isCardLinkedWPassByIdResponse"/>
+  <xs:element name="isCardPhysicallyLinkedById" type="tns:isCardPhysicallyLinkedById"/>
+  <xs:element name="isCardPhysicallyLinkedByIdResponse" type="tns:isCardPhysicallyLinkedByIdResponse"/>
+  <xs:element name="linkPassToCardOnline" type="tns:linkPassToCardOnline"/>
+  <xs:element name="linkPassToCardOnlineResponse" type="tns:linkPassToCardOnlineResponse"/>
+  <xs:element name="linkPhysicalCard" type="tns:linkPhysicalCard"/>
+  <xs:element name="linkPhysicalCardResponse" type="tns:linkPhysicalCardResponse"/>
+  <xs:complexType name="isCardLinkedWPassById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isCardLinkedWPassByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isCardPhysicallyLinkedById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isCardPhysicallyLinkedByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardPriceById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardPriceByIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardTypeById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardTypeByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLinkedPassIdByCardId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLinkedPassIdByCardIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardIdByPhysicalId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="physicalId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardIdByPhysicalIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardNameById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardNameByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="linkPassToCardOnline">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="physicalId" type="xs:string"/>
+      <xs:element minOccurs="0" name="passId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="linkPassToCardOnlineResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getPhysicalCardIdById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPhysicalCardIdByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardsNotPhysicallyLinked">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardsNotPhysicallyLinkedResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardsPhysicallyLinked">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCardsPhysicallyLinkedResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="linkPhysicalCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardId" type="xs:string"/>
+      <xs:element minOccurs="0" name="physicalId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="linkPhysicalCardResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="CardNotFoundException" type="tns:CardNotFoundException"/>
+  <xs:complexType name="CardNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PassNotFoundException" type="tns:PassNotFoundException"/>
+  <xs:complexType name="PassNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerNotFoundException" type="tns:CustomerNotFoundException"/>
+  <xs:complexType name="CustomerNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCardsNotPhysicallyLinkedResponse">
+    <wsdl:part element="tns:getCardsNotPhysicallyLinkedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CardNotFoundException">
+    <wsdl:part element="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardTypeById">
+    <wsdl:part element="tns:getCardTypeById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CustomerNotFoundException">
+    <wsdl:part element="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardIdByPhysicalId">
+    <wsdl:part element="tns:getCardIdByPhysicalId" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardNameById">
+    <wsdl:part element="tns:getCardNameById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isCardPhysicallyLinkedByIdResponse">
+    <wsdl:part element="tns:isCardPhysicallyLinkedByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isCardLinkedWPassByIdResponse">
+    <wsdl:part element="tns:isCardLinkedWPassByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isCardLinkedWPassById">
+    <wsdl:part element="tns:isCardLinkedWPassById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isCardPhysicallyLinkedById">
+    <wsdl:part element="tns:isCardPhysicallyLinkedById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardIdByPhysicalIdResponse">
+    <wsdl:part element="tns:getCardIdByPhysicalIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardPriceById">
+    <wsdl:part element="tns:getCardPriceById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLinkedPassIdByCardId">
+    <wsdl:part element="tns:getLinkedPassIdByCardId" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardTypeByIdResponse">
+    <wsdl:part element="tns:getCardTypeByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="linkPassToCardOnline">
+    <wsdl:part element="tns:linkPassToCardOnline" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLinkedPassIdByCardIdResponse">
+    <wsdl:part element="tns:getLinkedPassIdByCardIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPhysicalCardIdById">
+    <wsdl:part element="tns:getPhysicalCardIdById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardsNotPhysicallyLinked">
+    <wsdl:part element="tns:getCardsNotPhysicallyLinked" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardsPhysicallyLinked">
+    <wsdl:part element="tns:getCardsPhysicallyLinked" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardNameByIdResponse">
+    <wsdl:part element="tns:getCardNameByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardsPhysicallyLinkedResponse">
+    <wsdl:part element="tns:getCardsPhysicallyLinkedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardPriceByIdResponse">
+    <wsdl:part element="tns:getCardPriceByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="linkPassToCardOnlineResponse">
+    <wsdl:part element="tns:linkPassToCardOnlineResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PassNotFoundException">
+    <wsdl:part element="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="linkPhysicalCardResponse">
+    <wsdl:part element="tns:linkPhysicalCardResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPhysicalCardIdByIdResponse">
+    <wsdl:part element="tns:getPhysicalCardIdByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="linkPhysicalCard">
+    <wsdl:part element="tns:linkPhysicalCard" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CardService">
+    <wsdl:operation name="isCardLinkedWPassById">
+      <wsdl:input message="tns:isCardLinkedWPassById" name="isCardLinkedWPassById">
+    </wsdl:input>
+      <wsdl:output message="tns:isCardLinkedWPassByIdResponse" name="isCardLinkedWPassByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isCardPhysicallyLinkedById">
+      <wsdl:input message="tns:isCardPhysicallyLinkedById" name="isCardPhysicallyLinkedById">
+    </wsdl:input>
+      <wsdl:output message="tns:isCardPhysicallyLinkedByIdResponse" name="isCardPhysicallyLinkedByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardPriceById">
+      <wsdl:input message="tns:getCardPriceById" name="getCardPriceById">
+    </wsdl:input>
+      <wsdl:output message="tns:getCardPriceByIdResponse" name="getCardPriceByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardTypeById">
+      <wsdl:input message="tns:getCardTypeById" name="getCardTypeById">
+    </wsdl:input>
+      <wsdl:output message="tns:getCardTypeByIdResponse" name="getCardTypeByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedPassIdByCardId">
+      <wsdl:input message="tns:getLinkedPassIdByCardId" name="getLinkedPassIdByCardId">
+    </wsdl:input>
+      <wsdl:output message="tns:getLinkedPassIdByCardIdResponse" name="getLinkedPassIdByCardIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardIdByPhysicalId">
+      <wsdl:input message="tns:getCardIdByPhysicalId" name="getCardIdByPhysicalId">
+    </wsdl:input>
+      <wsdl:output message="tns:getCardIdByPhysicalIdResponse" name="getCardIdByPhysicalIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardNameById">
+      <wsdl:input message="tns:getCardNameById" name="getCardNameById">
+    </wsdl:input>
+      <wsdl:output message="tns:getCardNameByIdResponse" name="getCardNameByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="linkPassToCardOnline">
+      <wsdl:input message="tns:linkPassToCardOnline" name="linkPassToCardOnline">
+    </wsdl:input>
+      <wsdl:output message="tns:linkPassToCardOnlineResponse" name="linkPassToCardOnlineResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:PassNotFoundException" name="PassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPhysicalCardIdById">
+      <wsdl:input message="tns:getPhysicalCardIdById" name="getPhysicalCardIdById">
+    </wsdl:input>
+      <wsdl:output message="tns:getPhysicalCardIdByIdResponse" name="getPhysicalCardIdByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardsNotPhysicallyLinked">
+      <wsdl:input message="tns:getCardsNotPhysicallyLinked" name="getCardsNotPhysicallyLinked">
+    </wsdl:input>
+      <wsdl:output message="tns:getCardsNotPhysicallyLinkedResponse" name="getCardsNotPhysicallyLinkedResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardsPhysicallyLinked">
+      <wsdl:input message="tns:getCardsPhysicallyLinked" name="getCardsPhysicallyLinked">
+    </wsdl:input>
+      <wsdl:output message="tns:getCardsPhysicallyLinkedResponse" name="getCardsPhysicallyLinkedResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CustomerNotFoundException" name="CustomerNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="linkPhysicalCard">
+      <wsdl:input message="tns:linkPhysicalCard" name="linkPhysicalCard">
+    </wsdl:input>
+      <wsdl:output message="tns:linkPhysicalCardResponse" name="linkPhysicalCardResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CardNotFoundException" name="CardNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CardServiceImplServiceSoapBinding" type="tns:CardService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="isCardLinkedWPassById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isCardLinkedWPassById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isCardLinkedWPassByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isCardPhysicallyLinkedById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isCardPhysicallyLinkedById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isCardPhysicallyLinkedByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardPriceById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCardPriceById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCardPriceByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardTypeById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCardTypeById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCardTypeByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedPassIdByCardId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLinkedPassIdByCardId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLinkedPassIdByCardIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardIdByPhysicalId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCardIdByPhysicalId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCardIdByPhysicalIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardNameById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCardNameById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCardNameByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="linkPassToCardOnline">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="linkPassToCardOnline">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="linkPassToCardOnlineResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PassNotFoundException">
+        <soap:fault name="PassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPhysicalCardIdById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPhysicalCardIdById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPhysicalCardIdByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardsNotPhysicallyLinked">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCardsNotPhysicallyLinked">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCardsNotPhysicallyLinkedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCardsPhysicallyLinked">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCardsPhysicallyLinked">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCardsPhysicallyLinkedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CustomerNotFoundException">
+        <soap:fault name="CustomerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="linkPhysicalCard">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="linkPhysicalCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="linkPhysicalCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CardNotFoundException">
+        <soap:fault name="CardNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CardServiceImplService">
+    <wsdl:port binding="tns:CardServiceImplServiceSoapBinding" name="CardServiceImplPort">
+      <soap:address location="http://localhost:8080/account-server/CardWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,22 @@
+# Showing few stats of the current station
+
+dailyPresence resort_F lift_1 2021 05 09
+dailyPresence resort_F lift_1 2021 05 10
+
+presenceHourStat resort_F lift_2 2021 05 09 20
+
+monthlyPresence resort_F lift_3 05
+monthlyPresence resort_F lift_3 06
+
+weeklyPresence resort_F lift_5 18
+weeklyPresence resort_F lift_5 19
+
+yearlyPresence resort_F d_lift_1 2021
+
+resortPresence resort_F 2021 05 09
+
+allPassesSold 2021 05 07
+aPassSold 2021 05 07 Discovery-demo
+childPassesSold 2021 05 07
+normalCardSold 2021 05 07
+superCardSold 2021 05 07

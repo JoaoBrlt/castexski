@@ -1,0 +1,51 @@
+# Registering some customers and make them buy few items
+
+register Ludovic Marti ludovic.marti@poly.fr
+    login ludovic.marti@poly.fr
+    orderCards Super-Cartex-demo true 1
+    orderCards Cartex-demo false 1
+    orderPasses Discovery-demo 24 false 3
+    orderPasses Discovery-demo 120 true 2
+    addCard ludovic-card 1100008969830011 111 01 2031 true
+    validateCart
+exit
+
+register Ryana Karaki ryana.karaki@poly.fr
+    login ryana.karaki@poly.fr
+    orderCards Cartex-demo false 2
+    orderPasses Discovery-demo 72 false 1
+    addCard ryana-card 2200008969830022 222 02 2032 true
+    validateCart
+exit
+
+register Valentin Roccelli valentin.roccelli@poly.fr
+    login valentin.roccelli@poly.fr
+    addCard valentin-card 3300008969830033 333 03 2033 true
+    orderCards Cartex-demo-2 false 1
+    orderPasses Expert-demo 120 true 1
+    validateCart
+exit
+
+register Joao Brilhante joao.brilhante@poly.fr
+    login joao.brilhante@poly.fr
+    addCard joao-card 4400008969830044 444 04 2034 true
+    orderCards Cartex-demo false 1
+    orderPasses Training-demo 24 false 1
+    validateCart
+exit
+
+register Armand Fargeon armand.fargeon@poly.fr
+    login armand.fargeon@poly.fr
+    addCard armand-card 5500008969830055 555 05 2035 true
+    orderCards Cartex-demo-2 false 1
+    orderCards Cartex-demo false 1
+    orderCards Cartex-demo false 1
+    orderPasses Expert-demo 72 false 1
+    orderPasses Training-demo 72 true 2
+    validateCart
+    displayPasses
+exit
+
+merchantRegister Philippe Collet pc@poly.fr polytech_ISA
+subscribeMerchant pc@poly.fr resort_F
+business pc@poly.fr
