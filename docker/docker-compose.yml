@@ -1,0 +1,89 @@
+version: '3.9'
+
+services:
+  # Bank service.
+  bank-service:
+    image: isadevops2021teamf/bank-service
+    container_name: bank-service
+    ports:
+      - "9090:9090"
+    networks:
+      - castexski-network
+
+  # Display service.
+  display-service:
+    image: isadevops2021teamf/display-service
+    container_name: display-service
+    ports:
+      - "9191:9191"
+    networks:
+      - castexski-network
+
+  # Mail service.
+  mail-service:
+    image: isadevops2021teamf/mail-service
+    container_name: mail-service
+    ports:
+      - "9292:9292"
+    networks:
+      - castexski-network
+
+  # Phone service.
+  phone-service:
+    image: isadevops2021teamf/phone-service
+    container_name: phone-service
+    ports:
+      - "9393:9393"
+    networks:
+      - castexski-network
+
+  # Weather service.
+  weather-service:
+    image: isadevops2021teamf/weather-service
+    container_name: weather-service
+    ports:
+      - "9494:9494"
+    networks:
+      - castexski-network
+
+  # Server.
+  server:
+    image: isadevops2021teamf/server
+    container_name: server
+    environment:
+      - BANK_HOST=bank-service
+      - BANK_PORT=9090
+      - DISPLAY_HOST=display-service
+      - DISPLAY_PORT=9191
+      - MAIL_HOST=mail-service
+      - MAIL_PORT=9292
+      - PHONE_HOST=phone-service
+      - PHONE_PORT=9393
+      - WEATHER_HOST=weather-service
+      - WEATHER_PORT=9494
+    ports:
+      - "8080:8080"
+    depends_on:
+      bank-service:
+        condition: service_started
+    networks:
+      - castexski-network
+
+  # Client.
+  client:
+    image: isadevops2021teamf/client
+    container_name: client
+    command: "server 8080"
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/host
+    depends_on:
+      server:
+        condition: service_healthy
+    networks:
+      - castexski-network
+
+networks:
+  castexski-network:
+    driver: bridge
