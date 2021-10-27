@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "57420515-4550-45ec-a1c9-a9756fd6b67f",
+		"name": "Payment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "WorkingPaymentTest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"creditCard\": {\n        \"CreditCardNumber\": \"8969836789\",\n        \"ExpirationDate\": \"28/07/2021\",\n        \"CVV\": 735\n    },\n    \"Amount\": 75.69\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/pay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FailingPaymentTest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"creditCard\": {\n        \"CreditCardNumber\": \"0123456789\",\n        \"ExpirationDate\": \"07/28/2018\",\n        \"CVV\": 735\n    },\n    \"Amount\": 75.69\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/pay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllPayments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPayment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/payments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"payments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Refund",
+			"item": [
+				{
+					"name": "RefundTest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentId\":1,\n    \"Amount\": 75.69\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/refund",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"refund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRefund",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/refunds/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"refunds",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllRefunds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/refunds",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

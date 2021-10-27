@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "f39fe26e-bc6a-4667-9d2c-098f00e78f23",
+		"name": "Phone Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Send a message to a customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"+33100112233\",\n    \"To\": \"+33600110011\",\n    \"Text\": \"Hey, check out our new ski resorts !\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9393/messages",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send a message to a premium customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"+33100112233\",\n    \"To\": \"+33699009900\",\n    \"Text\": \"Hey, snowfalls are expected next week! It's a good time to plan your vacations.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9393/messages",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the messages",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"sales@castexski.com\",\n    \"To\": \"mairie@nice.fr\",\n    \"Subject\": \"Daily report\",\n    \"Body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9393/messages",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the messages sent to the customer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"sales@castexski.com\",\n    \"To\": \"mairie@nice.fr\",\n    \"Subject\": \"Daily report\",\n    \"Body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9393/messages/to/+33600110011",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"messages",
+						"to",
+						"+33600110011"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the messages sent to the premium customer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"sales@castexski.com\",\n    \"To\": \"mairie@nice.fr\",\n    \"Subject\": \"Daily report\",\n    \"Body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9393/messages/to/+33699009900",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"messages",
+						"to",
+						"+33699009900"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the messages sent from the sales",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"sales@castexski.com\",\n    \"To\": \"mairie@nice.fr\",\n    \"Subject\": \"Daily report\",\n    \"Body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9393/messages/from/+33100112233",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"messages",
+						"from",
+						"+33100112233"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a message",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"sales@castexski.com\",\n    \"To\": \"mairie@nice.fr\",\n    \"Subject\": \"Daily report\",\n    \"Body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9393/messages/0",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"messages",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

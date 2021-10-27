@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "8be87d5e-9542-4ccd-836d-0e1b0497e4ee",
+		"name": "Email Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Send an email to the prefecture",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"from\": \"admin@castexski.com\",\n    \"to\": \"prefecture@example.com\",\n    \"subject\": \"Daily report\",\n    \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9292/emails",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"emails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send an email to a customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"from\": \"sales@castexski.com\",\n    \"to\": \"customer@example.com\",\n    \"subject\": \"Big discounts are incoming !\",\n    \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9292/emails",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"emails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the emails sent to the prefecture",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"sales@castexski.com\",\n    \"To\": \"mairie@nice.fr\",\n    \"Subject\": \"Daily report\",\n    \"Body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9292/emails/to/prefecture@example.com",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"emails",
+						"to",
+						"prefecture@example.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the emails sent to the customer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"sales@castexski.com\",\n    \"To\": \"mairie@nice.fr\",\n    \"Subject\": \"Daily report\",\n    \"Body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9292/emails/to/customer@example.com",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"emails",
+						"to",
+						"customer@example.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the emails sent from the administration",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"sales@castexski.com\",\n    \"To\": \"mairie@nice.fr\",\n    \"Subject\": \"Daily report\",\n    \"Body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9292/emails/from/admin@castexski.com",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"emails",
+						"from",
+						"admin@castexski.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the emails sent from the sales",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"sales@castexski.com\",\n    \"To\": \"mairie@nice.fr\",\n    \"Subject\": \"Daily report\",\n    \"Body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9292/emails/from/sales@castexski.com",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"emails",
+						"from",
+						"sales@castexski.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get an email",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"From\": \"sales@castexski.com\",\n    \"To\": \"mairie@nice.fr\",\n    \"Subject\": \"Daily report\",\n    \"Body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9292/emails/0",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"emails",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an email",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:9292/emails/0",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"emails",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete all the emails",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:9292/emails",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"emails"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

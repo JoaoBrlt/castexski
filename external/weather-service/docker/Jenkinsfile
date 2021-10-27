@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven3'
+        jdk 'jdk8'
+    }
+    triggers {
+        upstream(
+            upstreamProjects: 'isa-devops-2021-team-f-weather-service',
+            threshold: hudson.model.Result.SUCCESS
+        )
+    }
+    stages {
+        stage('Mono') {
+            agent {
+                docker {
+                    image 'mono:latest'
+                }
+            }
+            steps {
+				sh 'echo "Compiling the weather service."'
+				sh './compile.sh'
+				sh 'echo "Done"'
+            }
+            post {
+                success {
+                    stash name: 'build', includes: "server.exe"
+                }
+            }
+        }
+        stage('Docker') {
+        	steps {
+        		dir('docker') {
+        			unstash 'build'
+                	sh './build.sh'
+            	}
+            }
+        }
+		stage('Stop') {
+            steps {
+                dir('docker') {
+                    sh 'docker stop $(docker ps -aqf "name=isadevops2021teamf-weather-service") || echo "No service up"'
+                }
+            }
+        }
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                script {
+                    docker.withRegistry('', 'docker-hub-private-login') {
+                        dir('docker') {
+                            sh './deploy.sh'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Run') {
+            steps {
+                dir('docker') {
+                    sh './run.sh'
+                }
+            }
+        }
+    }
+}

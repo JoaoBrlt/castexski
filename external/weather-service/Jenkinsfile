@@ -1,0 +1,61 @@
+pipeline {
+    agent none
+    triggers {
+        cron('H * * * *')
+        pollSCM('* * * * *')
+    }
+    stages {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'mono:latest'
+                }
+            }
+            steps {
+                sh './compile.sh'
+            }
+            post {
+                success {
+                    stash name: 'build', includes: "server.exe,version"
+                }
+            }
+        }
+        stage('Deploy') {
+            agent {
+                docker {
+                    image 'releases-docker.jfrog.io/jfrog/jfrog-cli:latest'
+                }
+            }
+            when {
+                branch 'main'
+            }
+            steps {
+                unstash 'build'
+                sh './deploy.sh'
+                stash name: 'deploy', includes: "version"
+            }
+        }
+        stage('Update') {
+            agent any
+            when {
+                branch 'main'
+            }
+            steps {
+                unstash 'deploy'
+                sshagent (credentials: ['github-private-ssh-key']) {
+                    // Configure the user.
+                    sh 'git config user.email "isa.devops.2021.team.f@gmail.com"'
+                    sh 'git config user.name "IsaDevOps2021TeamF"'
+                    sh 'git config core.sshCommand "ssh -v -o StrictHostKeyChecking=no"'
+
+                    // Commit the changes.
+                    sh 'git checkout main'
+                    sh 'git add -A'
+                    sh 'git commit -m "Update the weather service version." || echo "No changes to commit."'
+                    sh 'git pull origin main'
+                    sh 'git push origin main'
+                }
+            }
+        }
+    }
+}

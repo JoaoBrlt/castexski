@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "22f00af0-d258-44e5-9e74-1fc3123f871a",
+		"name": "Display Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add a sign",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Text\": \"a sign\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/signs/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"signs",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the signs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9191/signs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"signs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a sign",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9191/signs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"signs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Switch the state of a sign",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9191/signs/1/switch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"signs",
+						"1",
+						"switch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change the text of a sign",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Text\": \"new message\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/signs/1/display",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"signs",
+						"1",
+						"display"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

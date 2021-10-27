@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "8395c72f-6d07-4088-aeea-7b484ddf476d",
+		"name": "Weather Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add a forecast",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"city\": \"Biot\",\n    \"date\": \"02052050\",\n    \"temperatureCelsius\": -25.4,\n    \"precipitationMm\": 5.0,\n    \"windKph\": 30,\n    \"snowCm\": 45,\n    \"powderAlert\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9494/forecasts",
+					"host": [
+						"localhost"
+					],
+					"port": "9494",
+					"path": [
+						"forecasts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a forecast",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9494/forecasts/02052050/Biot",
+					"host": [
+						"localhost"
+					],
+					"port": "9494",
+					"path": [
+						"forecasts",
+						"02052050",
+						"Biot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a forecast for a unknown city",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9494/forecasts/02052050/UnknownCity",
+					"host": [
+						"localhost"
+					],
+					"port": "9494",
+					"path": [
+						"forecasts",
+						"02052050",
+						"UnknownCity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a forecast for a unknown date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9494/forecasts/31082070/Biot",
+					"host": [
+						"localhost"
+					],
+					"port": "9494",
+					"path": [
+						"forecasts",
+						"31082070",
+						"Biot"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
