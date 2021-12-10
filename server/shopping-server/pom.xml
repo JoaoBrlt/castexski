@@ -19,7 +19,6 @@
         <!-- Plugins. -->
         <versions.maven.compiler>3.6.1</versions.maven.compiler>
         <versions.maven.ejb>2.5.1</versions.maven.ejb>
-        <versions.artifactory>3.2.0</versions.artifactory>
 
         <!-- Java EE. -->
         <versions.javaee>7.0-1</versions.javaee>
@@ -45,29 +44,6 @@
         <tests.included>**/*Test.java</tests.included>
         <tests.excluded>**/*IntegrationTest.java</tests.excluded>
     </properties>
-
-    <!-- Artifactory repositories. -->
-    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>Team F-releases</name>
-            <url>{artifactory.url}/team-f-libs-release</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Team F-snapshots</name>
-            <url>{artifactory.url}/team-f-libs-snapshot</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <!-- JFrog plugins. -->
-    <pluginRepositories>
-        <pluginRepository>
-            <id>jfrog-plugins-release</id>
-            <name>plugins-release</name>
-            <url>https://oss.jfrog.org/artifactory/plugins-release</url>
-        </pluginRepository>
-    </pluginRepositories>
 
     <dependencies>
         <!-- JSON format. -->
@@ -253,44 +229,6 @@
                     <args>-Xmx1024m -XX:PermSize=256m</args>
                     <deployOpenEjbApplication>true</deployOpenEjbApplication>
                 </configuration>
-            </plugin>
-
-            <!-- Artifactory. -->
-            <plugin>
-                <groupId>org.jfrog.buildinfo</groupId>
-                <artifactId>artifactory-maven-plugin</artifactId>
-                <version>${versions.artifactory}</version>
-                <executions>
-                    <execution>
-                        <id>build-info</id>
-                        <goals>
-                            <goal>publish</goal>
-                        </goals>
-                        <configuration>
-                            <deployProperties>
-                                <gradle>awesome</gradle>
-                            </deployProperties>
-                            <artifactory>
-                                <includeEnvVars>true</includeEnvVars>
-                                <envVarsExcludePatterns>*password*,*secret*,*key*,*token*,*passphrase*</envVarsExcludePatterns>
-                                <timeoutSec>60</timeoutSec>
-                            </artifactory>
-                            <publisher>
-                                <contextUrl>${artifactory.url}</contextUrl>
-                                <username>${artifactory.username}</username>
-                                <password>${artifactory.password}</password>
-                                <excludePatterns>*-tests.jar</excludePatterns>
-                                <repoKey>team-f-libs-release</repoKey>
-                                <snapshotRepoKey>team-f-libs-snapshot</snapshotRepoKey>
-                            </publisher>
-                            <buildInfo>
-                                <buildName>${project.artifactId}</buildName>
-                                <buildNumber>${project.version}</buildNumber>
-                                <buildUrl>${artifactory.url}/artifactory-build-info</buildUrl>
-                            </buildInfo>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
