@@ -23,4 +23,12 @@
         <module>display-server</module>
         <module>notification-server</module>
     </modules>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub JoaoBrlt Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/joaobrlt/castexski</url>
+        </repository>
+    </distributionManagement>
 </project>

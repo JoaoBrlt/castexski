@@ -45,6 +45,14 @@
         <tests.excluded>**/*IntegrationTest.java</tests.excluded>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub JoaoBrlt Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/joaobrlt/castexski</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <!-- JSON format. -->
         <dependency>

@@ -26,6 +26,14 @@
         <versions.openjpa>2.4.1</versions.openjpa>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub JoaoBrlt Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/joaobrlt/castexski</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <!-- Jackson. -->
         <dependency>

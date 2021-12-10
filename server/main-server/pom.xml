@@ -35,6 +35,14 @@
         <versions.display>1.0-SNAPSHOT</versions.display>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub JoaoBrlt Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/joaobrlt/castexski</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <!-- Account server. -->
         <dependency>
